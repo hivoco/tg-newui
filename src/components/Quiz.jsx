@@ -1,30 +1,30 @@
 const Quiz = () => {
   return (
-    <div className="bg-[url('/public/images/bg_quiz_screen.png')]  h-screen  w-screen bg-center bg-no-repeat ">
+    <div className="quiz_bg  h-screen  w-screen bg-cover bg-no-repeat ">
       <div className="flex flex-col gap-10">
         <header className="flex gap-[34px] items-center  pt-6 px-6">
           <img
             className="w-[83.21px] h-[73px]"
-            src="/public/images/tgp-logo.png"
+            src="/images/tgp-logo.png"
             alt="tgp-logo.png"
           />
 
           <img
             className="w-[147px] h-[62px]"
-            src="/public/images/game-logo.png"
+            src="/images/game-logo.png"
             alt="game-logo.png"
           />
 
           <div className="flex flex-col gap-[19px]">
             <img
               className="w-[73px] "
-              src="/public/images/btn-exit.png"
+              src="/images/btn-exit.png"
               alt="btn-exit.png"
             />
 
             <img
               className="w-[84px]"
-              src="/public/images/btn-mute.png"
+              src="/images/btn-mute.png"
               alt="btn-mute.png"
             />
           </div>
@@ -47,7 +47,7 @@ const Quiz = () => {
       <div className="flex flex-col items-center gap-[60px]">
         <img
           className="w-[147px] h-[171px]"
-          src="/public/images/btn_record.png"
+          src="/images/btn_record.png"
           alt="btn_record.png"
         />
 
@@ -66,12 +66,11 @@ const Quiz = () => {
             <input className="w-8 h-8" type="radio" name="" id="" />
           </div>
         </div>
-
       </div>
 
       <div className="flex  gap-8 w-full h-[76px] px-[51px]">
-        <img src="/public/images/btn_skip.png" alt="" />
-        <img src="/public/images/btn_skip.png" alt="" />
+        <img src="/images/btn_skip.png" alt="" />
+        <img src="/images/btn_skip.png" alt="" />
         {/* 
         <button className="opacity-45">skip</button>
         <button className="opacity-45">submit</button> */}

@@ -1,57 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 @font-face {
-    font-family: Rift Soft;
-    font-weight: 300;
-    src: url('/public/fonts/Rift Soft Demi.otf');
+  font-family: Rift Soft;
+  font-weight: 300;
+  src: url("/public/fonts/Rift Soft Demi.otf");
 }
 
-
 .hex {
-    margin-top: 70px;
-    width: 208px;
-    height: 120px;
-    background: #6C6;
-    position: relative;
+  margin-top: 70px;
+  width: 208px;
+  height: 120px;
+  background: #6c6;
+  position: relative;
+}
+
+.hex:before,
+.hex:after {
+  content: "";
+  border-left: 104px solid transparent;
+  border-right: 104px solid transparent;
+  position: absolute;
+}
+
+.hex:before {
+  top: -59px;
+  border-bottom: 60px solid #6c6;
+}
+
+.hex:after {
+  bottom: -59px;
+  border-top: 60px solid #6c6;
+}
+
+.hex.inner {
+  background-color: blue;
+  -webkit-transform: scale(0.8, 0.8);
+  -moz-transform: scale(0.8, 0.8);
+  transform: scale(0.8, 0.8);
+  z-index: 1;
+}
+
+.hex.inner:before {
+  border-bottom: 60px solid blue;
+}
+
+.hex.inner:after {
+  border-top: 60px solid blue;
+}
+
+/* //sdfghjk */
+
+.transition-transform {
+  transition: transform 0.5s ease-out;
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0;
   }
-  
-  .hex:before,
-  .hex:after {
-    content: "";
-    border-left: 104px solid transparent;
-    border-right: 104px solid transparent;
-    position: absolute;
+
+  50% {
+    opacity: 1;
   }
-  
-  .hex:before {
-    top: -59px;
-    border-bottom: 60px solid #6C6;
-  }
-  
-  .hex:after {
-    bottom: -59px;
-    border-top: 60px solid #6C6;
-  }
-  
-  .hex.inner {
-    background-color: blue;
-    -webkit-transform: scale(.8, .8);
-    -moz-transform: scale(.8, .8);
-    transform: scale(.8, .8);
-    z-index: 1;
-  }
-  
-  .hex.inner:before {
-    border-bottom: 60px solid blue;
-  }
-  
-  .hex.inner:after {
-    border-top: 60px solid blue;
-  }
-  
-  
+}
+
+.dot1 {
+  @apply inline-block;
+  animation: blink 1s infinite 0.33s;
+}
+
+.dot2 {
+  @apply inline-block;
+  animation: blink 1s infinite 0.66s;
+}
+
+.dot3 {
+  @apply inline-block;
+  animation: blink 1s infinite 1s;
+}
+
+.gradient {
+  background: linear-gradient(103deg, #0071c7, #960000);
+}
+
+.hexagon {
+  border-radius:20px;
+  position: relative;
+  height: 119px;
+  width: 103px;
+  background: #e4c5c5;
+}
+
+.hexagon:before {
+  position: absolute;
+  content: "";
+}
+
+.hexagon:before {
+  top: 4px;
+  /* border width */
+  left: 4px;
+  /* border width */
+  height: calc(100% - 8px);
+  /* 100% - (2 * border width) */
+  width: calc(100% - 8px);
+  /* 100% - (2 * border width) */
+  background: #fff;
+}
+
+.hexagon,
+.hexagon:before {
+  -webkit-clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+.hexagon_selected {
+  border-radius: 20px;
+  position: relative;
+  height: 119px;
+  width: 103px;
+  background: #0a398f;
+}
+
+.hexagon_selected:before {
+  position: absolute;
+  content: "";
+}
+
+.hexagon_selected:before {
+  top: 4px;
+  /* border width */
+  left: 4px;
+  /* border width */
+  height: calc(100% - 8px);
+  /* 100% - (2 * border width) */
+  width: calc(100% - 8px);
+  /* 100% - (2 * border width) */
+  background: #1655a3;
+}
+
+.hexagon_selected,
+.hexagon_selected:before {
+  -webkit-clip-path: polygon(50% 0%,
+      100% 25%,
+      100% 75%,
+      50% 100%,
+      0% 75%,
+      0% 25%);
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+ .gradient-text {
+   background: linear-gradient(to right, #f00, #00f);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+ }
