@@ -2,7 +2,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import CommanHeader from "./CommanHeader";
 // import AudioPrompt from "./AudioPrompt"
 // import Layout from "../../Layout";
-import axios from "../api/instance";
+import axios from "../api/instance.js";
 import { useEffect, useRef, useState } from "react";
 // import { setDataBeforeLogin } from "../api/endpoint";
 import {
@@ -11,13 +11,13 @@ import {
   // micOffSound,
   // micOnSound,
 } from "../utils/helperFunction";
-import Timer from "./Timer";
+import Timer from "../utils/Timer.jsx";
 // import Popup from "./Popup";
 // import QuizLoading from "./QuizLoading";
 // import AudioPrompt from "./AudioPrompt";
-import AudioTimer from "./AudioTimer";
+import AudioTimer from "./AudioTimer.jsx";
 import useSpeechRecognition from "../utils/useSpeechRecognition";
-import Popup from "./Popup";
+// import Popup from "./Popup";
 // import CorrectAnswer from "../components/CorrectAnswer";
 // import SoundOnAnswer from "./SoundOnAnswer";
 

@@ -7,6 +7,7 @@ import AnimatedThirdPage from "./pages/AnimatedThirdPage";
 import Home from "./pages/Home";
 import Language from "./pages/Language";
 import BackgroundMusic from "../src/utils/BackroundMusic";
+import Quiz from "./components/Quiz"
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);
@@ -39,14 +40,15 @@ function App() {
 
         {/* <Route path="/login" element={<Login />} /> */}
 
-        {/* <Route path="/quiz/play" element={<ProtectedRoute />}>
+        <Route path="/quiz/play" element={< Quiz/>}>
           <Route
             path=""
             element={
-              <PlateformWiseQuiz setIsMusicAllowed={setIsMusicAllowed} />
+              <Quiz setIsMusicAllowed={setIsMusicAllowed} />
             }
           />
-        </Route> */}
+        </Route>
+        
         {/* <Route path="/quiz/play/finish" element={<ProtectedRoute />}>
           <Route path="" element={<Thanks />} />
         </Route>
