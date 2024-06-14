@@ -10,9 +10,9 @@ function AnimatedSecondPage() {
           alt="tgp-logo.png"
         />
       </header>
-      <div class="mx-[18px]">
+      <div className="mx-[18px]">
         <section>
-          <div class="mt-[34px] flex justify-center items-center flex-col gap-2">
+          <div className="mt-[34px] flex justify-center items-center flex-col gap-2">
             <small className="font-RiftSoft text-3xl  text-white w-auto">
               CHANCE TO WIN
             </small>
@@ -22,7 +22,7 @@ function AnimatedSecondPage() {
               alt="game-logo.png"
             />
           </div>
-          <div class=" flex flex-col  items-center text-white ">
+          <div className=" flex flex-col  items-center text-white ">
             <img
               className=" m-auto "
               src="/images/t_shirts@2x.png"

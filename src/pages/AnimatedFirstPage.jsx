@@ -11,14 +11,14 @@ function AnimatedFirstPage() {
         />
       </header>
       <section>
-        <div class="mt-[150px]">
+        <div className="mt-[150px]">
           <img
             className="w-[303px]   m-auto"
             src="/images/superstar.png"
             alt="game-logo.png"
           />
         </div>
-        <div class="mt-[70px] flex flex-col gap-10 items-center text-white">
+        <div className="mt-[70px] flex flex-col gap-10 items-center text-white">
           <img
             className=" m-auto animate-spin"
             src="/images/pre_loader.png"

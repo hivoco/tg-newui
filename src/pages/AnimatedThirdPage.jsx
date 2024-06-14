@@ -25,7 +25,7 @@ function AnimatedThirdPage() {
       </header>
       <div className="px-[18px]">
         <section>
-          <div class="mt-[34px] flex justify-center items-center flex-col gap-2">
+          <div className="mt-[34px] flex justify-center items-center flex-col gap-2">
             <small className="font-RiftSoft text-3xl  text-white w-auto">
               ALSO WIN
             </small>
@@ -35,7 +35,7 @@ function AnimatedThirdPage() {
               alt="game-logo.png"
             />
           </div>
-          <div class=" flex flex-col  items-center text-white ">
+          <div className=" flex flex-col  items-center text-white ">
             <img
               className=" m-auto w-[347px] mt-[98px] "
               src="/images/amazon_coupon@2x (1).png"

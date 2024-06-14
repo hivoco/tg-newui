@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import CommanHeader from "./CommanHeader";
 
 function LeaderBoard() {
-  // const [data, setData] = useState([]);
-  // useEffect(() => {
-  //   const res = JSON.parse(sessionStorage.getItem("user_data"));
-  //   setData(res?.winner);
-  // }, []);
+  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
 
+  // const [data, setData] = useState([]);
+  useEffect(() => {
+    // const res = JSON.parse(sessionStorage.getItem("user_data"));
+    // setData(res?.winner);
+    setanimationForUIOpacity(true);
+  }, []);
 
   const data = [
     {
@@ -86,7 +88,13 @@ function LeaderBoard() {
   });
 
   return (
-    <div className="bg-[url('/images/LeaderBoardBg.png')] max-h-fit flex flex-col gap-6  w-screen pt-6 bg-center bg-no-repeat ">
+    <div
+      className={`${
+        animationForUIOpacity
+          ? "opacity-100 transition-all duration-500 delay-200 ease-in"
+          : "opacity-0"
+      } container bg-[url('/images/LeaderBoardBg.png')] max-h-fit flex flex-col gap-6  w-screen pt-6 bg-center bg-no-repeat`}
+    >
       <div className="flex flex-col gap-[1.09rem]">
         <div className="flex flex-col gap-[2.15rem]">
           {<CommanHeader />}

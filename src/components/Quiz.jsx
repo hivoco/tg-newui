@@ -17,6 +17,9 @@ import Timer from "../utils/Timer.jsx";
 // import AudioPrompt from "./AudioPrompt";
 import AudioTimer from "./AudioTimer.jsx";
 import useSpeechRecognition from "../utils/useSpeechRecognition";
+import VerifyLoading from "./VerifyLoading.jsx";
+import Loading from "./Loading.jsx";
+import Popup from "./Popup.jsx";
 // import Popup from "./Popup";
 // import CorrectAnswer from "../components/CorrectAnswer";
 // import SoundOnAnswer from "./SoundOnAnswer";
@@ -36,6 +39,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
   const navigate = useNavigate();
   let audioRef = useRef();
   const abortControllerRef = useRef(null);
+  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
   const [allQuestions, setAllQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
@@ -76,6 +80,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     const res = getQuestion();
 
     setAllQuestions(res);
+    setanimationForUIOpacity(true);
   }, []);
 
   const handleNext = () => {
@@ -297,7 +302,13 @@ function Quiz({ setIsMusicAllowed, platform }) {
   };
 
   return (
-    <div className="bg-[url('/images/bg_quiz_screen.png')] pt-6 pb-8 flex flex-col gap-[3.75rem]  bg-cover min-h-fit  w-screen bg-center bg-no-repeat ">
+    <div
+      className={`${
+        animationForUIOpacity
+          ? "opacity-100 transition-all duration-500 delay-200 ease-in"
+          : "opacity-0"
+      } container bg-[url('/images/bg_quiz_screen.png')] pt-6 pb-8 flex flex-col gap-[3.75rem]  bg-cover min-h-fit  w-screen bg-center bg-no-repeat`}
+    >
       <div className="flex flex-col gap-[5.31rem]">
         <div className="flex flex-col gap-10">
           {<CommanHeader />}
@@ -319,9 +330,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
               </p>
             </div>
 
-            <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
-              {allQuestions?.[currentIndex]?.question}
-            </h1>
+            <div className="h-[150px] ">
+              <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
+                {allQuestions?.[currentIndex]?.question}
+              </h1>
+            </div>
           </div>
         </div>
 
@@ -349,9 +362,12 @@ function Quiz({ setIsMusicAllowed, platform }) {
                   src="/images/soundvaves.svg"
                   alt="btn_record.png"
                 />
-                <p className="text-lg  -tracking-[1.17px] leading-[22px] text-center text-white">
-                  Listening...
-                </p>
+                <div className="flex items-center font-RiftSoft text-lg text-center text-white mt-2 font-extralight tracking-wide ">
+                  <span>Listning</span>
+                  <span className="dot1 ">.</span>
+                  <span className="dot2 ">.</span>
+                  <span className="dot3 ">.</span>
+                </div>
               </>
             )}
           </div>
@@ -494,6 +510,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
           isAnswered={isAnswered}
         />
       )}
+      {isLoading && <VerifyLoading />}
+      {isQuizQuestionLoading && <VerifyLoading />}
     </div>
   );
 }
