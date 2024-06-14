@@ -1,6 +1,14 @@
+import { useEffect, useState } from "react";
 import CommanHeader from "./CommanHeader";
 
 function LeaderBoard() {
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   const res = JSON.parse(sessionStorage.getItem("user_data"));
+  //   setData(res?.winner);
+  // }, []);
+
+
   const data = [
     {
       rank: 1,
@@ -39,7 +47,7 @@ function LeaderBoard() {
     },
   ];
 
-  const table = data.map((el, index) => {
+  const table = data?.map((el, index) => {
     return (
       <div
         key={el.rank}
@@ -170,7 +178,7 @@ function LeaderBoard() {
           </div>
         </div>
       </div>
-      
+
       <div className="flex flex-col gap-1">{table}</div>
     </div>
   );

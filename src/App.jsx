@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Language from "./pages/Language";
 import BackgroundMusic from "../src/utils/BackroundMusic";
 import Quiz from "./components/Quiz"
+import LeaderBoard from "./components/LeaderBoard";
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);
@@ -40,15 +41,14 @@ function App() {
 
         {/* <Route path="/login" element={<Login />} /> */}
 
-        <Route path="/quiz/play" element={< Quiz/>}>
-          <Route
-            path=""
-            element={
-              <Quiz setIsMusicAllowed={setIsMusicAllowed} />
-            }
-          />
+        <Route path="/quiz/play" element={<Quiz setIsMusicAllowed={setIsMusicAllowed} />} />
+
+        <Route path="/quiz/get-your-final-score" element={<LeaderBoard />}>
         </Route>
-        
+
+        {/* `/quiz/get-your-final-score?score=${responce.data.score}&time=${responce.data.time}&correct=${responce.data.totalCorrectAns}` */}
+
+
         {/* <Route path="/quiz/play/finish" element={<ProtectedRoute />}>
           <Route path="" element={<Thanks />} />
         </Route>

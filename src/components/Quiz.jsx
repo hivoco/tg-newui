@@ -224,7 +224,6 @@ function Quiz({ setIsMusicAllowed, platform }) {
         allQuestions?.[currentIndex]?.options[1]
       );
 
-
       let event = "";
       if (ans.is_correct === true) {
         if (ans.correct_answer === allQuestions?.[currentIndex]?.options[0]) {
@@ -370,7 +369,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
                 correctOption === "option_one"
                   ? "bg-[url('/images/checked_option.png')] text-white"
                   : "bg-[url('/images/option_field.png')]"
-              }    bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem] text-[#012A85]   py-4 px-6 `}
+              }  ${
+                selectedOption != ""
+                  ? "pointer-events-none"
+                  : "pointer-events-auto	"
+              }  bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem] text-[#012A85]   py-4 px-6 `}
             >
               {allQuestions
                 ? allQuestions?.[currentIndex]?.options[0]
@@ -399,7 +402,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
                 correctOption === "option_two"
                   ? "bg-[url('/images/checked_option.png')] text-white"
                   : "bg-[url('/images/option_field.png')] text-[#012A85] "
-              }  bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]   py-4 px-6 `}
+              }   ${
+                selectedOption != ""
+                  ? "pointer-events-none"
+                  : "pointer-events-auto	"
+              } bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]   py-4 px-6 `}
             >
               {allQuestions
                 ? allQuestions?.[currentIndex]?.options[1]
