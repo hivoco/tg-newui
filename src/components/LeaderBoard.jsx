@@ -93,7 +93,7 @@ function LeaderBoard() {
         animationForUIOpacity
           ? "opacity-100 transition-all duration-500 delay-200 ease-in"
           : "opacity-0"
-      } container bg-[url('/images/LeaderBoardBg.png')] max-h-fit flex flex-col gap-6  w-screen pt-6 bg-center bg-no-repeat`}
+      } container bg-[url('/images/LeaderBoardBg.png')] max-h-fit flex flex-col   w-screen pt-6 bg-center bg-no-repeat`}
     >
       <div className="flex flex-col gap-[1.09rem]">
         <div className="flex flex-col gap-[2.15rem]">

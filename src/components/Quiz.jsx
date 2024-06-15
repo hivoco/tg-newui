@@ -3,7 +3,7 @@ import CommanHeader from "./CommanHeader";
 // import AudioPrompt from "./AudioPrompt"
 // import Layout from "../../Layout";
 import axios from "../api/instance.js";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 // import { setDataBeforeLogin } from "../api/endpoint";
 import {
   debounce,
@@ -83,7 +83,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setanimationForUIOpacity(true);
   }, []);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -102,7 +102,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     if (currentIndex < 9) {
       setAudioTime(allQuestions?.[currentIndex + 1]?.audio_time);
     }
-  };
+  },[])
 
   const [replyAudio, setReplyAudio] = useState("");
   const [correctOption, setCorrectOption] = useState("");
@@ -300,6 +300,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
       `/quiz/get-your-final-score?score=${responce.data.score}&time=${responce.data.time}&correct=${responce.data.totalCorrectAns}`
     );
   };
+
+  console.log("called fghjkl")
 
   return (
     <div

@@ -165,3 +165,40 @@
    -webkit-background-clip: text;
    -webkit-text-fill-color: transparent;
  }
+
+
+ .hexagon-info {
+   border-radius: 20px;
+   position: relative;
+   height: 119px;
+   width: 103px;
+   background: #e4c5c5;
+ }
+
+ .hexagon-info:before {
+   position: absolute;
+   content: "";
+ }
+
+ .hexagon-info:before {
+   top: 4px;
+   /* border width */
+   left: 4px;
+   /* border width */
+   height: calc(100% - 8px);
+   /* 100% - (2 * border width) */
+   width: calc(100% - 8px);
+   /* 100% - (2 * border width) */
+   background: #fff;
+ }
+
+ .hexagon-info,
+ .hexagon-info:before {
+   -webkit-clip-path: polygon(50% 0%,
+       100% 25%,
+       100% 75%,
+       50% 100%,
+       0% 75%,
+       0% 25%);
+   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+ }

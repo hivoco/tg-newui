@@ -21,13 +21,12 @@ function Language() {
   useEffect(() => {
     const platformName = getPlatform();
     setPlatform(platformName);
+     setanimationForUIOpacity(true);
   }, []);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    setanimationForUIOpacity(true);
-  }, []);
+
   return (
     <div
       className={`${
