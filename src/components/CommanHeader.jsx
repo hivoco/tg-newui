@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-function CommanHeader() {
-  const navigate = useNavigate()
+function CommanHeader({ setPermissionToStartSound }) {
+  const navigate = useNavigate();
   return (
     <header className="flex gap-[2.125rem] items-center   px-6 ">
       <img
@@ -25,6 +25,7 @@ function CommanHeader() {
         />
 
         <img
+          onClick={() => setPermissionToStartSound(true)}
           className="w-[84px]"
           src="/images/btn-mute.png"
           alt="btn-mute.png"

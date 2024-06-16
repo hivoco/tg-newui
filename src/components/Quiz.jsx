@@ -1,28 +1,13 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import CommanHeader from "./CommanHeader";
-// import AudioPrompt from "./AudioPrompt"
-// import Layout from "../../Layout";
 import axios from "../api/instance.js";
 import { useCallback, useEffect, useRef, useState } from "react";
-// import { setDataBeforeLogin } from "../api/endpoint";
-import {
-  debounce,
-  // decodeUnicode,
-  // micOffSound,
-  // micOnSound,
-} from "../utils/helperFunction";
+import { debounce } from "../utils/helperFunction";
 import Timer from "../utils/Timer.jsx";
-// import Popup from "./Popup";
-// import QuizLoading from "./QuizLoading";
-// import AudioPrompt from "./AudioPrompt";
+
 import AudioTimer from "./AudioTimer.jsx";
 import useSpeechRecognition from "../utils/useSpeechRecognition";
 import VerifyLoading from "./VerifyLoading.jsx";
-import Loading from "./Loading.jsx";
-import Popup from "./Popup.jsx";
-// import Popup from "./Popup";
-// import CorrectAnswer from "../components/CorrectAnswer";
-// import SoundOnAnswer from "./SoundOnAnswer";
 
 function Quiz({ setIsMusicAllowed, platform }) {
   const {
@@ -51,7 +36,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
   const [seconds, setSeconds] = useState(100);
 
-  const [permissionToStartSound, setPermissionToStartSound] = useState(true); // changed to true
+  const [permissionToStartSound, setPermissionToStartSound] = useState(false); // changed to true
   const [openSoundPopup, setOpenSoundPopup] = useState(true);
 
   const [audioTime, setAudioTime] = useState(20);
@@ -83,7 +68,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setanimationForUIOpacity(true);
   }, []);
 
-  const handleNext = useCallback(() => {
+  const handleNext = () => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
@@ -102,7 +87,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
     if (currentIndex < 9) {
       setAudioTime(allQuestions?.[currentIndex + 1]?.audio_time);
     }
-  },[])
+    console.log("audiotimer", allQuestions?.[currentIndex + 1]?.audio_time);
+  };
 
   const [replyAudio, setReplyAudio] = useState("");
   const [correctOption, setCorrectOption] = useState("");
@@ -301,8 +287,6 @@ function Quiz({ setIsMusicAllowed, platform }) {
     );
   };
 
-  console.log("called fghjkl")
-
   return (
     <div
       className={`${
@@ -313,7 +297,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
     >
       <div className="flex flex-col gap-[5.31rem]">
         <div className="flex flex-col gap-10">
-          {<CommanHeader />}
+          {
+            <CommanHeader
+              setPermissionToStartSound={setPermissionToStartSound}
+            />
+          }
           <div className="flex flex-col gap-[9px] ">
             <div className="py-3   px-6 flex justify-between w-full bg-black opacity-40 bg-blend-overlay  text-lg  text-left tracking-[-1.17px] leading-[22px] text-white">
               <p className=" opacity-70"> Question {currentIndex + 1}/10 </p>

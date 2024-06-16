@@ -1,6 +1,6 @@
 import { memo, useEffect } from "react";
 
-const Timer = memo(({
+const Timer = ({
   onTimeout,
   seconds,
   setSeconds,
@@ -25,6 +25,6 @@ const Timer = memo(({
   }, [seconds, isQuizQuestionLoading]);
 
   return seconds < 10 ? 0 : seconds;
-})
+}
 
 export default Timer;

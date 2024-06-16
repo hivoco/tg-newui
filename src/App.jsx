@@ -10,6 +10,7 @@ import BackgroundMusic from "../src/utils/BackroundMusic";
 import Quiz from "./components/Quiz";
 import LeaderBoard from "./components/LeaderBoard";
 import InformationPage from "./pages/InformationPage";
+import Animated from "./pages/Animated";
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);

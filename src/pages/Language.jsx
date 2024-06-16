@@ -21,19 +21,14 @@ function Language() {
   useEffect(() => {
     const platformName = getPlatform();
     setPlatform(platformName);
-     setanimationForUIOpacity(true);
+    setanimationForUIOpacity(true);
   }, []);
 
   const navigate = useNavigate();
 
-
   return (
     <div
-      className={`${
-        animationForUIOpacity
-          ? "opacity-100 transition-all duration-500 delay-200 ease-in"
-          : "opacity-0"
-      } container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
+      className={` container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
     >
       <header className="pt-6 px-6 ">
         <img
@@ -58,12 +53,18 @@ function Language() {
         <section className=" w-full ">
           <div
             onClick={() => setSelectedLanguage("english")}
-            className="flex justify-center items-center flex-col gap-2 mt-7"
+            className={`${
+              animationForUIOpacity
+                ? " transition-all duration-500 delay-700 ease-in"
+                : "flip-90"
+            } flex  justify-center items-center flex-col  gap-2 mt-7`}
           >
             <div
               className={`${
                 selectedLanguage == "english" ? "hexagon_selected " : "hexagon"
-              } hexagon flex justify-center items-center`}
+              } 
+              
+              hexagon flex justify-center items-center`}
             >
               <h1 className="gradient-text text-3xl font-medium text-red z-50">
                 A
@@ -76,7 +77,11 @@ function Language() {
           <div className="flex justify-around items-center mt-2">
             <div
               onClick={() => setSelectedLanguage("hindi")}
-              className="flex justify-center items-center flex-col gap-2"
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in"
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
@@ -93,7 +98,11 @@ function Language() {
             </div>
             <div
               onClick={() => setSelectedLanguage("tamil")}
-              className="flex justify-center items-center flex-col gap-2"
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in"
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
@@ -112,7 +121,11 @@ function Language() {
           <div className="flex justify-around items-center mt-8">
             <div
               onClick={() => setSelectedLanguage("telugu")}
-              className="flex justify-center items-center flex-col gap-2"
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in"
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
@@ -129,7 +142,11 @@ function Language() {
             </div>
             <div
               onClick={() => setSelectedLanguage("bangla")}
-              className="flex justify-center items-center flex-col gap-2"
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in"
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
@@ -147,7 +164,15 @@ function Language() {
           </div>
         </section>
         <section className="mb-32 mt-[25px] w-full flex justify-center">
-          <GradientButton onClick={getUniqueID} title="NEXT" />
+          <GradientButton
+            onClick={getUniqueID}
+            title="NEXT"
+            className={` ${
+              animationForUIOpacity
+                ? "  transition-all duration-500 delay-700 ease"
+                : " opacity-0  translate-y-20 "
+            }`}
+          />
         </section>
 
         <img

@@ -1,6 +1,6 @@
-import { memo, useEffect, useState } from "react";
+import {  useEffect, useState } from "react";
 
-const AudioTimer =  memo(({ onTimeout, audioTime, setAudioTime, isAnswered }) => {
+const AudioTimer = ({ onTimeout, audioTime, setAudioTime, isAnswered }) => {
   const [isInitialRender, setIsInitialRender] = useState(true);
 
   useEffect(() => {
@@ -23,6 +23,6 @@ const AudioTimer =  memo(({ onTimeout, audioTime, setAudioTime, isAnswered }) =>
   }, [audioTime]);
 
   return null;
-})
+};
 
 export default AudioTimer;
