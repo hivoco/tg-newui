@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const AudioTimer = ({ onTimeout, audioTime, setAudioTime, isAnswered }) => {
   const [isInitialRender, setIsInitialRender] = useState(true);
@@ -14,7 +14,6 @@ const AudioTimer = ({ onTimeout, audioTime, setAudioTime, isAnswered }) => {
   useEffect(() => {
     if (!isInitialRender) {
       if (audioTime === 0 && !isAnswered) {
-        console.log("fgf");
         onTimeout();
       }
     } else {

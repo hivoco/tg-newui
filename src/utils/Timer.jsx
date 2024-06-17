@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Timer = ({
   onTimeout,

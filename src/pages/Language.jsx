@@ -28,7 +28,7 @@ function Language() {
 
   return (
     <div
-      className={` container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
+      className={`border border-blue-800 container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
     >
       <header className="pt-6 px-6 ">
         <img

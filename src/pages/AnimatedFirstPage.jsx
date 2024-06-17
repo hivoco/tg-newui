@@ -5,11 +5,16 @@ function AnimatedFirstPage() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
 
   useEffect(() => {
-    setanimationForUIOpacity(true);
+    let timer = setTimeout(() => {
+      setanimationForUIOpacity(true);
+    }, 700);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
   return (
     <div
-      className={` container bg-[url('/images/loader_screen_bg@2x.png')]  h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
+      className={`border border-blue-800 animate-fadeIn container bg-[url('/images/loader_screen_bg@2x.png')]  min-h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
     >
       <header className="pt-6 px-6 ">
         <img
@@ -18,24 +23,33 @@ function AnimatedFirstPage() {
           alt="tgp-logo.png"
         />
       </header>
-      <div className="mx-[18px]">
+      <img
+        className={`${
+          animationForUIOpacity
+            ? "opacity-100 top-28 scale-100 transition-all duration-500 delay-700 ease"
+            : "bottom-0 opacity-0 scale-50"
+        } absolute  object-contain w-full z-10`}
+        src="/images/player-loading.png "
+        alt="game-logo.png"
+      />
+      <div className="mx-[18px] ">
         <section
-          className={`  ${
+          className={`relative z-20 ${
             animationForUIOpacity
               ? "transition-all duration-500 delay-700 ease"
               : " opacity-0 -translate-y-32  "
           }`}
         >
-          <div className="mt-[150px]">
+          <div className="mt-[150px] ">
             <img
               className="w-[303px]   m-auto"
               src="/images/superstar.png"
               alt="game-logo.png"
             />
           </div>
-          <div className="mt-[70px] flex flex-col gap-10 items-center text-white">
+          <div className="mt-[50px] flex flex-col gap-10 items-center text-white">
             <img
-              className=" m-auto animate-spin"
+              className=" h-[120px] w-[120px] m-auto animate-spin"
               src="/images/pre_loader.png"
               alt="game-logo.png"
             />

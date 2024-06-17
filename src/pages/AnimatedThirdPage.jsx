@@ -7,7 +7,12 @@ function AnimatedThirdPage() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
 
   useEffect(() => {
-    setanimationForUIOpacity(true);
+     let timer = setTimeout(() => {
+       setanimationForUIOpacity(true);
+     }, 700);
+     return () => {
+       clearTimeout(timer);
+     };
   }, []);
 
   const handleClick = () => {
@@ -15,8 +20,8 @@ function AnimatedThirdPage() {
   };
   return (
     <div
-      className={`  
-         container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
+      className={`   border border-blue-800
+        container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
     >
       <header className="pt-6 px-6 ">
         <img

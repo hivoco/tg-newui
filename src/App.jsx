@@ -11,6 +11,9 @@ import Quiz from "./components/Quiz";
 import LeaderBoard from "./components/LeaderBoard";
 import InformationPage from "./pages/InformationPage";
 import Animated from "./pages/Animated";
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import PlateformWiseQuiz from "./components/PlateformWiseQuiz";
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);
@@ -40,17 +43,23 @@ function App() {
         />
         <Route path="/select-language" element={<Language />} />
 
-        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<Login />} />
 
-        <Route
-          path="/quiz/play"
-          element={<Quiz setIsMusicAllowed={setIsMusicAllowed} />}
-        />
+        <Route path="/quiz/play" element={<ProtectedRoute />}>
+          <Route
+            path=""
+            element={
+              <PlateformWiseQuiz setIsMusicAllowed={setIsMusicAllowed} />
+            }
+          />
+        </Route>
 
-        <Route
-          path="/quiz/get-your-final-score"
-          element={<LeaderBoard />}
-        ></Route>
+
+        <Route path="/login" element={<Login />}/>
+        
+        <Route path="/result/access-your-leader" element={<ProtectedRoute />}>
+          <Route path="" element={<LeaderBoard />} />
+        </Route>
 
         {/* `/quiz/get-your-final-score?score=${responce.data.score}&time=${responce.data.time}&correct=${responce.data.totalCorrectAns}` */}
 
@@ -60,9 +69,9 @@ function App() {
         <Route path="/quiz/get-your-final-score" element={<ProtectedRoute />}>
           <Route path="" element={<FinalScore />} />
         </Route>
-        <Route path="/result/access-your-leader" element={<ProtectedRoute />}>
-          <Route path="" element={<LeaderBoard />} />
-        </Route>*/}
+
+
+  */}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>

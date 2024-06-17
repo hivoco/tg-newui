@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-
+import  { useEffect, useState } from "react";
 import Animated from "./Animated";
-
 import { preloadImages } from "../components/preloadImages";
 import Popup from "../components/Popup";
+import GradientButton from "../components/GradientButton";
 
 const Home = ({ setIsMusicAllowed }) => {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
-
   const containerWidth = 349;
   const circleDiameter = 80; // 50px diameter (half of the 100px width)
   const [dragging, setDragging] = useState(false);
@@ -17,13 +15,21 @@ const Home = ({ setIsMusicAllowed }) => {
   const [startSplashScreen, setstartSplashScreen] = useState(false);
 
   useEffect(() => {
-    setanimationForUIOpacity(true);
-    setIsMusicAllowed(true);
+    let timer = setTimeout(() => {
+      setanimationForUIOpacity(true);
+    }, 700);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const images = [
+    '/images/Login-bg.png',
+    '/images/bg_quiz_screen.png',
     "/images/splash-bg@2x.png",
+    "/images/players-home.png",
     "/images/loader_screen_bg@2x.png",
+    "/images/player-loading.png",
     "/images/SignedJerseys1@2x.png",
     "/images/SignedJerseys1@2x.png",
     "/images/SignedJerseys1@2x.png",
@@ -31,7 +37,6 @@ const Home = ({ setIsMusicAllowed }) => {
     "/images/ribbon_jerseys@2x (1).png",
     "/images/top_winners@2x (1).png",
 
-    //logo
     "/images/superstar.png",
     "/images/pre_loader.png",
     "/images/tgp-logo.png",
@@ -50,7 +55,7 @@ const Home = ({ setIsMusicAllowed }) => {
 
   if (!loaded) {
     return (
-      <div className="w-screen h-screen bg-blue-800">
+      <div className="w-screen h-screen bg-blue-800   ">
         <Popup bg={"transparent"}>
           <div className=" flex flex-col justify-center items-center gap-2 ">
             <img
@@ -75,24 +80,31 @@ const Home = ({ setIsMusicAllowed }) => {
     setDragging(true);
     setStartX(clientX);
     setCurrentX(clientX);
+    // setIsMusicAllowed(true);
   };
 
   const handleMove = (clientX) => {
     if (dragging) {
       setCurrentX(clientX);
+      // setIsMusicAllowed(true);
     }
+    // setIsMusicAllowed(true);
   };
 
   const handleEnd = (clientX) => {
+    // setIsMusicAllowed(true);
     setDragging(false);
     const moveDistance = clientX - startX;
 
     if (moveDistance > containerWidth / 2) {
       setMovedRight(true);
+      // setIsMusicAllowed(true);
       yourFunction();
     } else {
       setMovedRight(false);
+      // setIsMusicAllowed(true);
     }
+    // setIsMusicAllowed(true);
   };
 
   const yourFunction = () => {
@@ -112,7 +124,7 @@ const Home = ({ setIsMusicAllowed }) => {
         <Animated />
       ) : (
         <div
-          className={` container bg-[url('/images/splash-bg@2x.png')]  min-h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
+          className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  min-h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
         >
           <header className="pt-6 px-6 ">
             <img
@@ -152,7 +164,7 @@ const Home = ({ setIsMusicAllowed }) => {
           </section>
 
           <section className={`  flex justify-center w-full`}>
-            <div
+            {/* <div
               onMouseMove={(e) => handleMove(e.clientX)}
               onMouseUp={(e) => handleEnd(e.clientX)}
               onMouseLeave={(e) => handleEnd(e.clientX)}
@@ -178,7 +190,26 @@ const Home = ({ setIsMusicAllowed }) => {
               <small className="font-RiftSoft text-2xl text-white">
                 SWIP TO START
               </small>
-            </div>
+            </div> */}
+
+            <GradientButton
+              title="Let's Start"
+              className={`${
+                animationForUIOpacity
+                  ? "opacity-100 bottom-10 scale-100 transition-all duration-500 delay-700 ease"
+                  : "bottom-0 opacity-0 scale-50"
+              } absolute   h-[75px] rounded-full px-[10px] py-[7px] z-20 `}
+              onClick={yourFunction}
+            />
+            <img
+              className={`${
+                animationForUIOpacity
+                  ? "opacity-100 bottom-0 scale-100 transition-all duration-500 delay-200 ease"
+                  : "bottom-0 opacity-0 scale-50"
+              } absolute  h-[350px] w-full z-10 `}
+              src="/images/players-home.png"
+              alt="game-logo.png"
+            />
           </section>
         </div>
       )}

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 
-function CommanHeader({ setPermissionToStartSound }) {
+function CommanHeader({ setPermissionToStartSound, currentIndex }) {
   const navigate = useNavigate();
   return (
-    <header className="flex gap-[2.125rem] items-center   px-6 ">
+    <header className="flex  items-center gap-3  px-6 ">
       <img
         className="w-[5.25rem] "
         src="/images/tgp-logo.png"
@@ -17,19 +17,22 @@ function CommanHeader({ setPermissionToStartSound }) {
         alt="game-logo.png"
       />
 
-      <div className="flex flex-col gap-[1.19rem]">
+      <div className="flex flex-col items-center gap-2 ">
         <img
-          className="w-[73px] "
+          onClick={() => navigate("/")}
+          className="h-6 object-contain"
           src="/images/btn-exit.png"
-          alt="btn-exit.png"
+          alt="exit button"
         />
 
-        <img
-          onClick={() => setPermissionToStartSound(true)}
-          className="w-[84px]"
-          src="/images/btn-mute.png"
-          alt="btn-mute.png"
-        />
+        {currentIndex === 0 && (
+          <img
+            onClick={() => setPermissionToStartSound(false)}
+            className="h-6 object-contain"
+            src="/images/btn-mute.png"
+            alt="button mute"
+          />
+        )}
       </div>
     </header>
   );

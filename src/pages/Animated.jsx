@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AnimatedFirstPage from "./AnimatedFirstPage";
 import AnimatedSecondPage from "./AnimatedSecondPage";
 import AnimatedThirdPage from "./AnimatedThirdPage";
