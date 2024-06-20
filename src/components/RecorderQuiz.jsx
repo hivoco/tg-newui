@@ -43,8 +43,10 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
   const [seconds, setSeconds] = useState(30);
   const abortControllerRef = useRef(null);
 
-  const [isGivenAnswerCorrect, setIsGivenAnswerCorrect] = useState(false);
-  const [correctResponceAnswer, setCorrectResponceAnswer] = useState("");
+  // const [isGivenAnswerCorrect, setIsGivenAnswerCorrect] = useState(false);
+  // const [correctResponceAnswer, setCorrectResponceAnswer] = useState("");
+  const [currentResponceQuestionID, setCurrentResponceQuestionID] = useState(0);
+
   const [isQuizQuestionLoading, setIsQuizQuestionLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [permissionToStartSound, setPermissionToStartSound] = useState(true); //
@@ -92,10 +94,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
       allQuestions?.[currentIndex]?.options[0],
       allQuestions?.[currentIndex]?.options[1]
     );
-
-    setIsGivenAnswerCorrect(ans?.is_correct);
-
-    setCorrectResponceAnswer(ans.correct_answer);
 
     setUserResponceArray({
       ...userResponceArray,
@@ -157,6 +155,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
     setReplyAudio(responce?.data?.response_text);
     setCorrectOption(responce?.data?.correct_option);
+    setCurrentResponceQuestionID(responce?.data?.question_id);
 
     return responce?.data;
   };
@@ -177,13 +176,12 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
+    abortControllerRef.current = null;
     setQuestionStatus("");
-    stopRecording();
+    // stopRecording();
     setCorrectOption("");
     setSelectedOption("");
     setIsQuizQuestionLoading(false);
-    setIsGivenAnswerCorrect(false);
-    setCorrectResponceAnswer("");
     setSeconds(30);
     setCurrentIndex((prevIndex) => (prevIndex > 8 ? 9 : prevIndex + 1));
     if (currentIndex < 9) {
@@ -201,8 +199,8 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
+    abortControllerRef.current = null;
     if (recordingBlob) {
-      
       blobToBase64(recordingBlob)
         .then((res) => {
           verifyAnswer(
@@ -215,8 +213,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
           )
             .then((ans) => {
               let event = "";
-              // console.log(typeof ans.is_correct, ans.is_correct);
-
               if (ans.is_correct === true) {
                 if (
                   ans.correct_option === "option_one"
@@ -237,9 +233,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                   event = allQuestions?.[currentIndex]?.options[1];
                 }
               }
-
-              setIsGivenAnswerCorrect(ans?.is_correct);
-              setCorrectResponceAnswer(ans.correct_answer);
               setUserResponceArray({
                 ...userResponceArray,
                 quiz: [
@@ -284,6 +277,10 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
   }, [recordingBlob]);
 
   useEffect(() => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    abortControllerRef.current = null;
     if (recordingTime > 4) {
       stopRecording();
     }
@@ -328,9 +325,9 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
               </p>
             </div>
 
-              <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
-                {allQuestions?.[currentIndex]?.question}
-              </h1>
+            <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
+              {allQuestions?.[currentIndex]?.question}
+            </h1>
           </div>
         </div>
 
@@ -376,7 +373,10 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
               }
               className={`${
                 correctOption === "option_one"
-                  ? "bg-[url('/images/checked_option.png')] text-white"
+                  ? currentResponceQuestionID ==
+                    allQuestions?.[currentIndex]?.question_id
+                    ? "bg-[url('/images/checked_option.png')] text-white"
+                    : "bg-[url('/images/option_field.png')]"
                   : "bg-[url('/images/option_field.png')]"
               }  ${
                 selectedOption != ""
@@ -411,7 +411,10 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
               }
               className={`${
                 correctOption === "option_two"
-                  ? "bg-[url('/images/checked_option.png')] text-white"
+                  ? currentResponceQuestionID ==
+                    allQuestions?.[currentIndex]?.question_id
+                    ? "bg-[url('/images/checked_option.png')] text-white"
+                    : "bg-[url('/images/option_field.png')] text-[#012A85] "
                   : "bg-[url('/images/option_field.png')] text-[#012A85] "
               }   ${
                 selectedOption != ""
