@@ -54,9 +54,8 @@ function App() {
           />
         </Route>
 
+        <Route path="/login" element={<Login />} />
 
-        <Route path="/login" element={<Login />}/>
-        
         <Route path="/result/access-your-leader" element={<ProtectedRoute />}>
           <Route path="" element={<LeaderBoard />} />
         </Route>

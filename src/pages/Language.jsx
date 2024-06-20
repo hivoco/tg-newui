@@ -6,7 +6,7 @@ import axios from "../api/instance.js";
 
 function Language() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState("english");
+  const [selectedLanguage, setSelectedLanguage] = useState("");
 
   const [platform, setPlatform] = useState("");
 
@@ -97,20 +97,21 @@ function Language() {
               </p>
             </div>
             <div
-              onClick={() => setSelectedLanguage("tamil")}
+              // onClick={() => setSelectedLanguage("tamil")}
               className={`${
                 animationForUIOpacity
-                  ? " transition-all duration-500 delay-700 ease-in"
+                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
                   : "flip-90"
               } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
                   selectedLanguage == "tamil" ? "hexagon_selected " : "hexagon"
-                } hexagon flex justify-center items-center`}
+                } hexagon flex justify-center items-center `}
               >
-                <h1 className="gradient-text text-3xl font-medium text-red z-50">
-                  அ
+                <h1 className=" text-lg font-medium text-blue-800 z-50 text-center">
+                  {/* அ */}
+                  Coming  Soon
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
@@ -120,10 +121,10 @@ function Language() {
           </div>
           <div className="flex justify-around items-center mt-8">
             <div
-              onClick={() => setSelectedLanguage("telugu")}
+              // onClick={() => setSelectedLanguage("telugu")}
               className={`${
                 animationForUIOpacity
-                  ? " transition-all duration-500 delay-700 ease-in"
+                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
                   : "flip-90"
               } flex justify-center items-center flex-col  gap-2`}
             >
@@ -132,8 +133,9 @@ function Language() {
                   selectedLanguage == "telugu" ? "hexagon_selected " : "hexagon"
                 } hexagon flex justify-center items-center`}
               >
-                <h1 className="gradient-text text-3xl font-medium text-red z-50">
-                  తె
+                <h1 className=" text-lg text-center font-medium text-blue-700 z-50">
+                  {/* తె */}
+                  Coming Soon
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
@@ -141,10 +143,10 @@ function Language() {
               </p>
             </div>
             <div
-              onClick={() => setSelectedLanguage("bangla")}
+              // onClick={() => setSelectedLanguage("bangla")}
               className={`${
                 animationForUIOpacity
-                  ? " transition-all duration-500 delay-700 ease-in"
+                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
                   : "flip-90"
               } flex justify-center items-center flex-col  gap-2`}
             >
@@ -153,8 +155,9 @@ function Language() {
                   selectedLanguage == "bangla" ? "hexagon_selected " : "hexagon"
                 } hexagon flex justify-center items-center`}
               >
-                <h1 className="gradient-text text-3xl font-medium text-red z-50">
-                  ঝ
+                <h1 className=" text-lg font-medium text-blue-700 z-50 text-center">
+                  {/* ঝ */}
+                  Coming Soon
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
@@ -164,15 +167,30 @@ function Language() {
           </div>
         </section>
         <section className="mb-32 mt-[25px] w-full flex justify-center">
+
+        {/* <GradientButton
+              title="Let's Start"
+              className={`${
+                animationForUIOpacity
+                  ? "opacity-100 bottom-10 scale-100 transition-all duration-500 delay-700 ease"
+                  : "bottom-0 opacity-0 scale-50"
+              } absolute   h-[75px] rounded-full px-[10px] py-[7px] z-20 `}
+              onClick={yourFunction}
+            /> */}
+
+      
+  
           <GradientButton
             onClick={getUniqueID}
             title="NEXT"
-            className={` ${
-              animationForUIOpacity
+            className={`  h-[75px] rounded-full px-[100px] py-[7px] z-20    ${
+              selectedLanguage
                 ? "  transition-all duration-500 delay-700 ease"
                 : " opacity-0  translate-y-20 "
             }`}
           />
+
+
         </section>
 
         <img

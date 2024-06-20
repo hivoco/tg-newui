@@ -30,7 +30,7 @@ function AnimatedThirdPage() {
           alt="tgp-logo.png"
         />
       </header>
-      <div className="px-[18px]">
+      <div className="px-6">
         <section>
           <div
             className={` ${
@@ -56,10 +56,11 @@ function AnimatedThirdPage() {
             } flex flex-col  items-center text-white`}
           >
             <img
-              className=" m-auto w-[347px] mt-[98px] "
+              className="w-[347px] object-contain mt-[58px] px-4"
               src="/images/amazon_coupon@2x (1).png"
               alt="game-logo.png"
             />
+
           </div>
           <div
             className={`${
@@ -73,14 +74,16 @@ function AnimatedThirdPage() {
               Win Gaming Contest.
             </p>
             <span className="underline mt-6">Click here to view T&C</span>
+
             <GradientButton
               title="ACCEPT"
               className={` ${
                 animationForUIOpacity
                   ? "  transition-all duration-500 delay-700 ease"
                   : " opacity-0  translate-y-20 "
-              } mt-[23px] mx-auto`}
+              } mt-[23px] mx-auto    h-[75px] rounded-full px-[90px] py-[7px] z-20`}
               onClick={handleClick}
+
             />
           </div>
         </section>

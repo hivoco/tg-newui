@@ -18,13 +18,13 @@ function LeaderBoard() {
           key={el.rank}
           className={`  py-[6.5px]   ${
             index === data.length - 1
-              ? "bg-gradient-to-r from-[#14915F] to-[#05DE6C] px-[0.68rem] mt-[1px]"
+              ? "bg-gradient-to-r from-[#14915F] to-[#05DE6C] px-11  mt-[1px "
               : "bg-[#00195080] mx-6 rounded-lg px-5"
           } flex justify-between  items-center `}
         >
           <div className=" flex   gap-5 items-center">
-            <span className=" font-Barlow font-bold text-xl leading-[1.5rem] text-white">
-              {el.rank}
+            <span className=" font-Barlow font-bold text-xl leading-[1.5rem] text-white w-6">
+           {el.rank}
               <sup>th</sup>
             </span>
 
@@ -34,7 +34,9 @@ function LeaderBoard() {
                   ? "/images/green-player-icon.svg"
                   : "/images/player-icon.png"
               }  `}
+
               className="w-11"
+              // className={` ${index === data.length - 1?     'w-10':"w-11"         }   `}
               alt="player-icon.png"
             />
           </div>
@@ -58,17 +60,18 @@ function LeaderBoard() {
         animationForUIOpacity
           ? "opacity-100 transition-all duration-500 delay-200 ease-in"
           : "opacity-0"
-      } container bg-[url('/images/LeaderBoardBg.png')]  min-h-fit bg-cover flex flex-col gap-6   w-screen pt-6 bg-center bg-no-repeat`}
+      } container bg-[url('/images/LeaderBoardBg.png')]  min-h-screen bg-cover flex flex-col gap-6   w-screen pt-6 bg-center bg-no-repeat`}
     >
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-[2.12rem]">
+      <div className="flex flex-col gap-4 ">
+        <div className="flex flex-col gap-[2.12rem] ">
           {<CommanHeader />}
           <div
-            className="bg-[url('/images/black-hexagon.png')] bg-no-repeat  bg-center px-6 py-[0.875rem] flex justify-center items-center  "
+            className=" bg-[url('/images/black-hexagon.png')]   bg-[length:88%]  bg-no-repeat  bg-center   my-auto    py-[0.875rem] flex justify-center items-center"
             alt="black-hexagon.png"
           >
             <img
-              src="/images/leaderboard-logo.png"
+              className="h-8 "
+              src="/images/Leaderboard@2x.png"
               alt="leaderboard-logo.png"
             />
           </div>
@@ -78,13 +81,13 @@ function LeaderBoard() {
           <div className="flex flex-col gap-[0.85rem] items-center ">
             <div className="flex flex-col gap-[4.5px] items-center">
               <img
-                src="/images/trophy-silver.png"
+                src="/images/trophy-silver.svg"
                 className="w-12"
                 alt="trophy-silver.png"
               />
 
               <img
-                src="/images/player-2nd.png"
+                src="/images/player-2nd.svg"
                 className="w-[7.3rem]"
                 alt="player-2nd.png"
               />
@@ -103,13 +106,13 @@ function LeaderBoard() {
           <div className="flex flex-col gap-[0.7rem] items-center mb-2 ">
             <div className="flex flex-col gap-1 items-center">
               <img
-                src="/images/trophy-gold.png"
+                src="/images/trophy-gold.svg"
                 className="w-12"
                 alt="trophy-gold.png"
               />
 
               <img
-                src="/images/player-1st.png"
+                src="/images/player-1st.svg"
                 className="w-[9.4rem]"
                 alt="player-1st.png"
               />
@@ -128,15 +131,15 @@ function LeaderBoard() {
           <div className="flex flex-col gap-[0.85rem] items-center ">
             <div className="flex flex-col gap-[4.5px] items-center">
               <img
-                src="/images/trophy-bronze.png"
+                src="/images/trophy-bronze.svg"
                 className="w-12"
                 alt="trophy-bronze.png"
               />
 
               <img
-                src="/images/player-3rd.png"
+                src="/images/player-3rd.svg"
                 className="w-[7.3rem]"
-                alt="player-2nd.png"
+                alt="player-3rd.png"
               />
             </div>
 

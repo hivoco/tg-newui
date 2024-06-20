@@ -24,7 +24,7 @@ const Timer = ({
     }
   }, [seconds, isQuizQuestionLoading]);
 
-  return seconds < 10 ? 0 : seconds;
-}
+  return seconds;
+};
 
 export default Timer;

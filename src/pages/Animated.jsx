@@ -12,7 +12,7 @@ function Animated() {
     }, 3000);
     setTimeout(() => {
       setChangeScreen(3);
-    }, 6000);
+    }, 8000);
   }, []);
   return (
     <>

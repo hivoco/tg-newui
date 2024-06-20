@@ -19,8 +19,8 @@ function AnimatedSecondPage() {
           alt="tgp-logo.png"
         />
       </header>
-      <div className="mx-[18px]">
-        <section>
+      <div className="mx-[18px] mb-28">
+        <section >
           <div
             className={`  ${
               animationForUIOpacity
@@ -66,7 +66,7 @@ function AnimatedSecondPage() {
         />
         <div className="flex justify-center">
           <img
-            className="absolute bottom-[28px] w-[144px]"
+            className="absolute   bottom-[28px] w-[144px]"
             src="/images/HiVoco Studio@2x.png"
             alt="game-logo.png"
           />

@@ -24,6 +24,7 @@ const Home = ({ setIsMusicAllowed }) => {
   }, []);
 
   const images = [
+    "/images/LeaderBoardBg.png",
     '/images/Login-bg.png',
     '/images/bg_quiz_screen.png',
     "/images/splash-bg@2x.png",
@@ -201,6 +202,7 @@ const Home = ({ setIsMusicAllowed }) => {
               } absolute   h-[75px] rounded-full px-[10px] py-[7px] z-20 `}
               onClick={yourFunction}
             />
+            
             <img
               className={`${
                 animationForUIOpacity

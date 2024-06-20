@@ -9,11 +9,10 @@ import {
   micOnSound,
   openAI_STT,
 } from "../utils/helperFunction";
-import { useCallback, useEffect, useMemo, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import Timer from "../utils/Timer";
 import AudioTimer from "./AudioTimer";
 // import CorrectAnswer from "./CorrectAnswer";
-// import AudioPrompt from "./AudioPrompt";
 import Popup from "./Popup";
 // import QuizLoading from "./QuizLoading";
 import SoundOnAnswer from "./SoundOnAnswer";
@@ -41,7 +40,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
   const [allQuestions, setAllQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-  const [seconds, setSeconds] = useState(100);
+  const [seconds, setSeconds] = useState(30);
   const abortControllerRef = useRef(null);
 
   const [isGivenAnswerCorrect, setIsGivenAnswerCorrect] = useState(false);
@@ -85,7 +84,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
       audioRef.current.src = null;
     }
 
-    // setSelectedOption(event);
     const ans = await verifyAnswer(
       event,
       id,
@@ -109,7 +107,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
           givenAns: event,
           correctAns: ans.correct_answer,
           isCorrect: ans.is_correct,
-          time: 100 - Number(seconds),
+          time: 30 - Number(seconds),
         },
       ],
     });
@@ -179,13 +177,14 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
+    setQuestionStatus("");
     stopRecording();
     setCorrectOption("");
     setSelectedOption("");
     setIsQuizQuestionLoading(false);
     setIsGivenAnswerCorrect(false);
     setCorrectResponceAnswer("");
-    setSeconds(100);
+    setSeconds(30);
     setCurrentIndex((prevIndex) => (prevIndex > 8 ? 9 : prevIndex + 1));
     if (currentIndex < 9) {
       setAudioTime(allQuestions?.[currentIndex + 1]?.audio_time);
@@ -199,7 +198,11 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
   };
 
   const handleRecordingComplete = async () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
     if (recordingBlob) {
+      
       blobToBase64(recordingBlob)
         .then((res) => {
           verifyAnswer(
@@ -247,7 +250,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                     givenAns: event,
                     correctAns: ans.correct_answer,
                     isCorrect: ans.is_correct,
-                    time: 100 - Number(seconds),
+                    time: 30 - Number(seconds),
                   },
                 ],
               });
@@ -298,9 +301,9 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         animationForUIOpacity
           ? "opacity-100 transition-all duration-500 delay-200 ease-in"
           : "opacity-0"
-      } container bg-[url('/images/bg_quiz_screen.png')] pt-6 pb-8 flex flex-col gap-[3.75rem]  bg-cover min-h-fit  w-screen bg-center bg-no-repeat`}
+      } container bg-[url('/images/bg_quiz_screen.png')] pt-6 pb-8 flex flex-col gap-[3.71rem]   bg-cover min-h-screen  w-screen bg-center bg-no-repeat`}
     >
-      <div className="flex flex-col gap-[5.31rem]">
+      <div className="flex flex-col gap-[3.125rem]">
         <div className="flex flex-col gap-10">
           {
             <CommanHeader
@@ -325,15 +328,13 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
               </p>
             </div>
 
-            <div className="h-[150px] ">
               <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
                 {allQuestions?.[currentIndex]?.question}
               </h1>
-            </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-[3.75rem]">
+        <div className="flex flex-col items-center gap-6">
           {/* w-[48%]  h-1/4 
         
         */}
@@ -364,7 +365,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
             )}
           </div>
 
-          <div className="flex flex-col gap-[1.68rem] font-RiftSoft px-[3.18rem] w-full">
+          <div className="flex flex-col gap-6 font-RiftSoft px-[3.18rem] w-full">
             <label //option 1
               onClick={() =>
                 handleOptionChange(
@@ -442,7 +443,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         <button
           onClick={() => {
             !isRecording && handleNext();
-            setQuestionStatus("");
           }}
           className={` ${
             currentIndex < 9 ? "visible" : "invisible"
@@ -452,10 +452,6 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         </button>
 
         <button
-          // onClick={() => {
-          //   setQuestionStatus("");
-          //   handleNext();
-          // }}
           onClick={() => {
             {
               currentIndex === 9 ? viewScore() : handleNext();
