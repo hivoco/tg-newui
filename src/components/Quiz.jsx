@@ -12,7 +12,6 @@ import SoundOnAnswer from "./SoundOnAnswer.jsx";
 
 function Quiz({ setIsMusicAllowed, platform }) {
   const {
-    recognition,
     speechText,
     setSpeechText,
     startSpeechRecognition,
@@ -29,8 +28,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
   const [allQuestions, setAllQuestions] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
-  const [isGivenAnswerCorrect, setIsGivenAnswerCorrect] = useState(false);
-  const [correctResponceAnswer, setCorrectResponceAnswer] = useState("");
+
+  const [currentResponceQuestionID, setCurrentResponceQuestionID] = useState(0);
   const [isQuizQuestionLoading, setIsQuizQuestionLoading] = useState(false);
   const [isAnswered, setIsAnswered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -70,11 +69,12 @@ function Quiz({ setIsMusicAllowed, platform }) {
   }, []);
 
   const handleNext = () => {
+    stopSpeechRecognition();
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
     }
-
     abortControllerRef.current = null;
+
     setQuestionStatus("");
     setCorrectOption("");
     setIsQuizQuestionLoading(false);
@@ -82,9 +82,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setMicOnTime(0);
     setSpeechText("");
     setSelectedOption("");
-    setIsGivenAnswerCorrect(false);
-    setCorrectResponceAnswer("");
-    setIsAnswered(false);
+      setIsAnswered(false);
     setCurrentIndex((prevIndex) => (prevIndex > 8 ? 9 : prevIndex + 1));
     if (currentIndex < 9) {
       setAudioTime(allQuestions?.[currentIndex + 1]?.audio_time);
@@ -136,6 +134,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
     setReplyAudio(responce?.data?.response_text);
     setCorrectOption(responce?.data?.correct_option);
+    setCurrentResponceQuestionID(responce?.data?.question_id);
+
     return responce?.data;
   };
 
@@ -157,9 +157,9 @@ function Quiz({ setIsMusicAllowed, platform }) {
       allQuestions?.[currentIndex]?.options[1]
     );
 
-    setIsGivenAnswerCorrect(ans.is_correct);
+    // setIsGivenAnswerCorrect(ans.is_correct);
 
-    setCorrectResponceAnswer(ans.correct_answer);
+    // setCorrectResponceAnswer(ans.correct_answer);
 
     setUserResponceArray({
       ...userResponceArray,
@@ -227,8 +227,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
         }
       }
 
-      setIsGivenAnswerCorrect(ans.is_correct);
-      setCorrectResponceAnswer(ans.correct_answer);
+      // setIsGivenAnswerCorrect(ans.is_correct);
+      // setCorrectResponceAnswer(ans.correct_answer);
       setUserResponceArray({
         ...userResponceArray,
         quiz: [
@@ -304,9 +304,9 @@ function Quiz({ setIsMusicAllowed, platform }) {
             </div>
 
             {/* <div className="h-[9.375rem]"> */}
-              <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
-                {allQuestions?.[currentIndex]?.question}
-              </h1>
+            <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
+              {allQuestions?.[currentIndex]?.question}
+            </h1>
             {/* </div> */}
           </div>
         </div>
@@ -320,8 +320,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
             }}
             className={`${
               isAnswered
-                ? "bg-[url('/images/btn_recording.png')] flex flex-col gap-[3px] justify-center items-center  bg-[length:13rem_15rem]"// w-[12.93rem] h-[15.06rem]    
-                : " bg-[url('/images/btn_record.png')]  flex  justify-center items-center  bg-[length:9rem_10.7rem]"//w-[9.18rem] h-[10.68rem]  
+                ? "bg-[url('/images/btn_recording.png')] flex flex-col gap-[3px] justify-center items-center  bg-[length:13rem_15rem]" // w-[12.93rem] h-[15.06rem]
+                : " bg-[url('/images/btn_record.png')]  flex  justify-center items-center  bg-[length:9rem_10.7rem]" //w-[9.18rem] h-[10.68rem]
             }   
             bg-center  bg-no-repeat  w-[12.93rem] h-[15.06rem] 
 
@@ -359,7 +359,10 @@ function Quiz({ setIsMusicAllowed, platform }) {
               }
               className={`${
                 correctOption === "option_one"
-                  ? "bg-[url('/images/checked_option.png')] text-white"
+                  ? currentResponceQuestionID ==
+                    allQuestions?.[currentIndex]?.question_id
+                    ? "bg-[url('/images/checked_option.png')] text-white"
+                    : "bg-[url('/images/option_field.png')]"
                   : "bg-[url('/images/option_field.png')]"
               }  ${
                 selectedOption != ""
@@ -395,8 +398,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
               }
               className={`${
                 correctOption === "option_two"
-                  ? "bg-[url('/images/checked_option.png')] text-white"
-                  : "bg-[url('/images/option_field.png')] text-[#012A85] "
+                  ? currentResponceQuestionID ==
+                    allQuestions?.[currentIndex]?.question_id
+                    ? "bg-[url('/images/checked_option.png')] text-white"
+                    : "bg-[url('/images/option_field.png')] text-[#012A85] "
+                  : "bg-[url('/images/option_field.png')] text-[#012A85"
               }   ${
                 selectedOption != ""
                   ? "pointer-events-none"
