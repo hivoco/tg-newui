@@ -190,6 +190,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
   const enter = async (question_id) => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
+      return
     }
     let value = speechText.trim();
 
