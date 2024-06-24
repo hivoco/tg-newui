@@ -64,7 +64,7 @@ const Login = () => {
               value={name}
               placeholder="FULL NAME"
               minLength={3}
-              maxLength={20}
+              maxLength={10}
             />
 
             <div className="flex w-full gap-0 items-center bg-white rounded-[13px]">
@@ -81,7 +81,6 @@ const Login = () => {
                 placeholder=" PHONE NUMBER "
                 value={phone}
                 onChange={(e) => {
-                  // const re = /^[0-9]*$/;
                   const re = /^[0-9\b]+$/;
                   if (e.target.value === "" || re.test(e.target.value)) {
                     setPhone(e.target.value);
@@ -96,7 +95,7 @@ const Login = () => {
       <div className=" flex flex-col  gap-32 items-center ">
         <GradientButton
           title={"SIGN UP"}
-          onClick={() => handleData()}
+          onClick={handleData}
           className={"px-0 w-full"}
         />
         <img className="h-10" src="/images/HiVoco Studio@2x.png" alt="" />

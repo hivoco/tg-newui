@@ -73,6 +73,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
     setIsLoading(false);
     setOpenSoundPopup(true);
   }, 200);
+  console.log(audioTime);
 
   const handleOptionChange = async (event, id, clickedOption) => {
     // event is option here

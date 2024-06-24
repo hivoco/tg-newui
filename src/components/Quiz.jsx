@@ -62,6 +62,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setOpenSoundPopup(true);
   }, 200);
 
+
   useEffect(() => {
     const res = getQuestion();
     setAllQuestions(res);

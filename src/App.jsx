@@ -41,6 +41,7 @@ function App() {
           path="/"
           element={<Home setIsMusicAllowed={setIsMusicAllowed} />}
         />
+        
         <Route path="/select-language" element={<Language />} />
 
         <Route path="/login" element={<Login />} />

@@ -214,7 +214,8 @@ const Home = ({ setIsMusicAllowed }) => {
             />
           </section>
         </div>
-      )}
+      )
+      }
     </>
   );
 };

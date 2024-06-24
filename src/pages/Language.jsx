@@ -120,21 +120,20 @@ function Language() {
           </div>
           <div className="flex justify-around items-center mt-8">
             <div
-              // onClick={() => setSelectedLanguage("telugu")}
+              onClick={() => setSelectedLanguage("telugu")}
               className={`${
                 animationForUIOpacity
-                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
+                  ? " transition-all duration-500 delay-700 ease-in "
                   : "flip-90"
               } flex justify-center items-center flex-col  gap-2`}
             >
               <div
                 className={`${
-                  selectedLanguage == "telugu" ? "hexagon_selected " : "hexagon"
+                  selectedLanguage === "telugu" ? "hexagon_selected" : "hexagon"
                 } hexagon flex justify-center items-center`}
               >
-                <h1 className=" text-lg text-center font-medium text-blue-700 z-50">
-                  {/* తె */}
-                  Coming Soon
+                <h1 className=" gradient-text text-3xl font-medium text-red z-50">
+                  తె
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
