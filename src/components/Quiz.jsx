@@ -363,7 +363,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
                   ? currentResponceQuestionID ==
                     allQuestions?.[currentIndex]?.question_id
                     ? "bg-[url('/images/checked_option.png')] text-white"
-                    : "bg-[url('/images/option_field.png')]"
+                    : "bg-[url('/images/option_field.png')] text-[#012A85] "
                   : "bg-[url('/images/option_field.png')]"
               }  ${
                 selectedOption != ""
@@ -402,8 +402,8 @@ function Quiz({ setIsMusicAllowed, platform }) {
                   ? currentResponceQuestionID ==
                     allQuestions?.[currentIndex]?.question_id
                     ? "bg-[url('/images/checked_option.png')] text-white"
-                    : "bg-[url('/images/option_field.png')] text-[#012A85] "
-                  : "bg-[url('/images/option_field.png')] text-[#012A85"
+                    : "bg-[url('/images/option_field.png')] text-[#012A85]"
+                  : "bg-[url('/images/option_field.png')] text-[#012A85]"
               }   ${
                 selectedOption != ""
                   ? "pointer-events-none"
