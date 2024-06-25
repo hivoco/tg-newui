@@ -11,7 +11,7 @@ const TextToSpeech = ({
   const wrongOrRightRef = useRef();
 
   const [audioUrl, setAudioUrl] = useState("");
-  const API_KEY = "sk-proj-zh8P7XBpFXN06mLV79xsT3BlbkFJZhQg4909IEBq35keWeSf";
+  const API_KEY =   'sk-proj-BeLQ0uFPzdX6835TeUGCT3BlbkFJKCpNBcXhE63skhEm8yie'
   const handleTextToSpeech = async () => {
     setAudioUrl("");
 
