@@ -5,16 +5,13 @@ function LeaderBoard() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
 
   const [data, setData] = useState([]);
-  console.log(data);
   useEffect(() => {
     const res = JSON.parse(sessionStorage.getItem("user_data"));
     setData(res?.winner);
     setanimationForUIOpacity(true);
   }, []);
 
-  // const filteredData = data?.filter(
-  //   (el, index) => (index > 2 && index < 7) || index === data.length - 1
-  // );
+
   
   const table = data?.map((el, index) => {
     return (

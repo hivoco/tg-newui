@@ -50,7 +50,8 @@ const Home = ({ setIsMusicAllowed }) => {
   useEffect(() => {
     const preloadedImages = preloadImages(images);
     Promise.all(preloadedImages.map((img) => img.decode()))
-      .then(() => setLoaded(true))
+      .then(() => 
+        setLoaded(true))
       .catch((error) => console.error("Image failed to load", error));
   }, []);
 
@@ -58,14 +59,14 @@ const Home = ({ setIsMusicAllowed }) => {
     return (
       <div className="w-screen h-screen bg-blue-800   ">
         <Popup bg={"transparent"}>
-          <div className=" flex flex-col justify-center items-center gap-2 ">
+          <div className=" flex flex-col justify-center items-center gap-4 ">
             <img
               className="animate-spin"
               src="/images/footbal.png"
               alt="Loading"
               srcSet=""
             />
-            <div className="flex items-center font-RiftSoft text-2xl text-center text-white mt-2 font-extralight tracking-wide ">
+            <div className="flex items-center font-RiftSoft text-2xl text-center text-white  font-extralight tracking-wide ">
               <span className="uppercase ">Loading</span>
               <span className="dot1 ">.</span>
               <span className="dot2 ">.</span>
@@ -125,47 +126,51 @@ const Home = ({ setIsMusicAllowed }) => {
         <Animated />
       ) : (
         <div
-          className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
+          className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  h-screen   w-screen   bg-center  bg-cover bg-no-repeat relative`}
         >
-          <header className="pt-8 px-6 ">
-            <img
-              className="w-[86px] h-[80px]"
-              src="/images/tgp-logo.png"
-              alt="tgp-logo.png"
-            />
-          </header>
+          <div className="flex flex-col gap-4">
+            <header className="pt-8 px-6 ">
+              <img
+                className="w-[5.375rem] h-[5rem]"
+                src="/images/tgp-logo.png"
+                alt="tgp-logo.png"
+              />
+            </header>
 
-          <section className="mt-4  w-full flex flex-col gap-2 ">
-            <img
-              className={`${
-                animationForUIOpacity
-                  ? "opacity-100 transition-all duration-500 delay-200 ease"
-                  : " opacity-0 scale-0 -translate-y-32 "
-              }   h-[9.43rem]   m-auto  `}
-              src="/images/superstar.png"
-              alt="game-logo.png"
-            />
+            <section className="w-full flex flex-col gap-2 ">
+              <img
+                className={`${
+                  animationForUIOpacity
+                    ? "opacity-100 transition-all duration-500 delay-200 ease"
+                    : " opacity-0 scale-0 -translate-y-32 "
+                }   h-[9.43rem]   m-auto  `}
+                src="/images/superstar.png"
+                alt="game-logo.png"
+              />
 
-            <img
-              className={`${
-                animationForUIOpacity
-                  ? "scale-100 transition-all duration-500 delay-200 ease"
-                  : "scale-75 opacity-0"
-              } m-auto  w-[18.25rem]`}
-              src="/images/tag@2x.png"
-              alt="game-logo.png"
-            />
+            <div className="flex flex-col gap-2">
+                <img
+                  className={`${
+                    animationForUIOpacity
+                      ? "scale-100 transition-all duration-500 delay-200 ease"
+                      : "scale-75 opacity-0"
+                  } m-auto  w-[18.25rem]`}
+                  src="/images/tag@2x.png"
+                  alt="game-logo.png"
+                />
 
-            <img
-              className={`${
-                animationForUIOpacity
-                  ? "opacity-100 transition-all duration-500 delay-200 ease"
-                  : "mt-24 opacity-0"
-              } m-auto mt-2 w-36`}
-              src="/images/HiVoco Studio@2x.png"
-              alt="game-logo.png"
-            />
-          </section>
+                <img
+                  className={`${
+                    animationForUIOpacity
+                      ? "opacity-100 transition-all duration-500 delay-200 ease"
+                      : "mt-24 opacity-0"
+                  } m-auto  w-36`}
+                  src="/images/HiVoco Studio@2x.png"
+                  alt="game-logo.png"
+                />
+            </div>
+            </section>
+          </div>
 
           <section className={`  flex justify-center w-full`}>
             {/* <div
@@ -205,7 +210,7 @@ const Home = ({ setIsMusicAllowed }) => {
               } absolute w-[10.875rem]   text-2xl  text-center tracking-[0.72px]  leading-[2.875rem]  py-[4.5px]     z-20 rounded-[2.375rem]  `}
               onClick={yourFunction}
             />
-            
+
             <img
               className={`${
                 animationForUIOpacity
@@ -217,8 +222,7 @@ const Home = ({ setIsMusicAllowed }) => {
             />
           </section>
         </div>
-      )
-      }
+      )}
     </>
   );
 };

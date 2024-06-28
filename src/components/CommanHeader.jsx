@@ -26,19 +26,19 @@ function CommanHeader({ setPermissionToStartSound, currentIndex }) {
       >
         <img
           onClick={() => navigate("/")}
-          className="h-[22px] object-contain"
+          className="h-[1.375rem] object-contain"
           src="/images/btn-exit.png"
           alt="exit button"
         />
 
-        {/* {currentIndex === 0 && ( */}
+         {currentIndex === 0 && (
           <img
             onClick={() => setPermissionToStartSound(false)}
-            className="h-[22px] object-contain"
+            className="h-[1.375rem] object-contain"
             src="/images/btn-mute.png"
             alt="button mute"
           />
-        {/* // )} */}
+         )}
       </div>
     </header>
   );
