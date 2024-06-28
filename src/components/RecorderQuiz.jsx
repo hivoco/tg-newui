@@ -364,6 +364,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
           <div className="flex  flex-col gap-[0.625rem] font-RiftSoft px-[1.945rem] w-full ">
             <label //option 1
+              style={{"backgroundSize":"100% 100%"}}
               onClick={() =>
                 handleOptionChange(
                   allQuestions?.[currentIndex]?.options[0],
@@ -383,7 +384,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
               }
-              } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] pl-[19px] pr-[23px] `}
+              } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] px-6`}
             >
               <span className="truncate w-[80%]">
               {allQuestions
@@ -404,6 +405,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
             </label>
 
             <label // option2
+              style={{"backgroundSize":"100% 100%"}}
               onClick={() =>
                 handleOptionChange(
                   allQuestions?.[currentIndex]?.options[1],
@@ -423,7 +425,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
               }
-               outline-none w-full bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] pl-[19px] pr-[23px]`}
+               outline-none w-full bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] px-6`}
             >
               <span className="truncate min-w-[9.125rem]">
                 {allQuestions

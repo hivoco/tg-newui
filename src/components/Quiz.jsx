@@ -278,7 +278,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
         animationForUIOpacity
           ? "opacity-100 transition-all duration-500 delay-200 ease-in"
           : "opacity-0"
-      } container bg-[url('/images/bg_quiz_screen.png')] pt-3 pb-[1rem] flex flex-col gap-8  bg-cover min-h-[100dvh]  w-screen bg-center bg-no-repeat`}
+      } container bg-[url('/images/bg_quiz_screen.png')] pt-3 pb-4 flex flex-col gap-8  bg-cover h-screen   w-screen bg-center bg-no-repeat`}
     >
       <div className={`flex flex-col  ${isAnswered?"gap-[2.25rem]":"gap-[3rem]"}`}>
         <div className="flex flex-col gap-7">
@@ -349,6 +349,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
           <div className="flex  flex-col gap-[0.625rem] font-RiftSoft px-[1.945rem] w-full ">
             <label //option 1
+              style={{"backgroundSize":"100% 100%"}}
               onClick={() =>
                 handleOptionChange(
                   allQuestions?.[currentIndex]?.options[0],
@@ -367,7 +368,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
                 selectedOption != ""
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
-              } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] pl-[19px] pr-[23px] `}
+              } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] px-6 `}
             >
               <span className="truncate w-[80%]">
                 {allQuestions
@@ -389,6 +390,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
             </label>
 
             <label // option2
+            style={{"backgroundSize":"100% 100%"}}
               onClick={() =>
                 handleOptionChange(
                   allQuestions?.[currentIndex]?.options[1],
@@ -408,7 +410,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
               } 	
-               outline-none w-full bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] pl-[19px] pr-[23px]`}
+               outline-none w-full  bg-center   bg-contain    bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] px-6 `}
             >
               <span className="truncate w-[80%]">
               {allQuestions
