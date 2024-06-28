@@ -37,7 +37,7 @@ function AnimatedThirdPage() {
               animationForUIOpacity
                 ? "  transition-all duration-500 delay-700 ease"
                 : " opacity-0  -translate-y-20 "
-            }  mt-[34px] flex justify-center items-center flex-col gap-2`}
+            }  mt-[2.125rem] flex justify-center items-center flex-col gap-2`}
           >
             <small className="font-RiftSoft text-3xl  text-white w-auto font-semibold  -tracking-[0.6px]">
               ALSO WIN
@@ -75,7 +75,8 @@ function AnimatedThirdPage() {
                 Win Gaming Contest.
               </p>
 
-              <p className="underline ">Click here to view T&C</p>
+              <p onClick={()=>navigate('/terms-and-conditions')} className="underline ">Click here to view T&C</p>
+
             </div>
 
             <GradientButton
