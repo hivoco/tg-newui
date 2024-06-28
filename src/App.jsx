@@ -14,6 +14,7 @@ import Animated from "./pages/Animated";
 import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PlateformWiseQuiz from "./components/PlateformWiseQuiz";
+import TermsAndConditions from "./components/TermsAndConditions";
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);
@@ -43,6 +44,8 @@ function App() {
         />
         
         <Route path="/select-language" element={<Language />} />
+
+        <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
 
         <Route path="/login" element={<Login />} />
 
