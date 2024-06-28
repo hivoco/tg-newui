@@ -299,10 +299,11 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         animationForUIOpacity
           ? "opacity-100 transition-all duration-500 delay-200 ease-in"
           : "opacity-0"
-      } container bg-[url('/images/bg_quiz_screen.png')] pt-6 pb-8 flex flex-col gap-[3.71rem]   bg-cover min-h-screen  w-screen bg-center bg-no-repeat`}
+      } container bg-[url('/images/bg_quiz_screen.png')] pt-3 pb-4 flex flex-col gap-8   bg-cover min-h-screen  w-screen bg-center bg-no-repeat`}
     >
-      <div className="flex flex-col gap-[3.125rem]">
-        <div className="flex flex-col gap-10">
+      <div className={`flex flex-col  ${isRecording?"gap-[2.25rem]":"gap-[3rem]"} `}>
+
+        <div className="flex flex-col gap-7">
           {
             <CommanHeader
               setPermissionToStartSound={setPermissionToStartSound}
@@ -310,10 +311,9 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
             />
           }
 
-          <div className="flex flex-col gap-[9px] ">
-            <div className="py-3   px-6 flex justify-between w-full bg-black opacity-40 bg-blend-overlay  text-lg  text-left tracking-[-1.17px] leading-[22px] text-white">
+          <div className="flex flex-col gap-[10px] ">
+          <div className="py-3 px-6 flex justify-between w-full bg-black opacity-40 bg-blend-overlay  text-lg  text-left tracking-[-1.17px] leading-[1.375rem] text-white">
               <p className=" opacity-70"> Question {currentIndex + 1}/10 </p>
-
               <p className="opacity-70">
                 <Timer
                   seconds={seconds}
@@ -325,45 +325,44 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                 />
               </p>
             </div>
-
-            <h1 className=" px-6 font-Barlow font-medium text-[1.75rem] leading-[2.125rem] text-white text-center tracking-[1.4px] ">
+            <h1 className=" px-6 font-Barlow font-medium text-[1.375rem] leading-[1.625rem] text-white text-center -tracking-[0.75px] ">
               {allQuestions?.[currentIndex]?.question}
             </h1>
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-6">
-          {/* w-[48%]  h-1/4 
-        
-        */}
+        <div className={`flex flex-col items-center ${ isRecording?"gap-[2.25rem]":"gap-[3rem]" } `}>
           <div
             onClick={() => toggleMic()}
             className={`${
               isRecording
-                ? "bg-[url('/images/btn_recording.png')] flex flex-col gap-[3px] justify-center items-center  "
-                : " bg-[url('/images/btn_record.png')]  "
+                ? "bg-[url('/images/btn_recording.png')] flex flex-col  justify-center items-center  bg-[length:9.875rem_11.375rem]  w-[9.875rem] h-[11.375rem]"
+                : " bg-[url('/images/btn_record.png')]  flex  justify-center items-center  bg-[length:8.43rem_9.81rem]  w-[8.43rem] h-[9.81rem]"
             }   
-          bg-center bg-contain bg-no-repeat  w-[207px] h-[241px]
-          ${selectedOption.trim() != "" ? "opacity-50" : "opacity-100"}`}
-          >
+            bg-center  bg-no-repeat  w-[9.875rem] h-[11.375rem] 
+            ${
+              selectedOption.trim() != ""
+                ? "opacity-50 pointer-events-none"
+                : "opacity-100 pointer-events-auto	"
+            }`}          >
             {isRecording && (
               <>
                 <img
-                  className="h-14"
+                  className="h-[3.375rem]"
                   src="/images/soundvaves.svg"
                   alt="btn_record.png"
                 />
-                <div className="flex items-center font-RiftSoft text-lg text-center text-white mt-2 font-extralight tracking-wide ">
+                <div className="flex items-center font-Barlow text-lg leading-[22px] -tracking-[1.17px] text-center text-white font-medium">
                   <span>Listning</span>
-                  <span className="dot1 ">.</span>
-                  <span className="dot2 ">.</span>
-                  <span className="dot3 ">.</span>
+                    <span className="dot1 ">.</span>
+                    <span className="dot2 ">.</span>
+                    <span className="dot3 ">.</span>
                 </div>
               </>
             )}
           </div>
 
-          <div className="flex flex-col gap-6 font-RiftSoft px-[3.18rem] w-full">
+          <div className="flex  flex-col gap-[0.625rem] font-RiftSoft px-[1.945rem] w-full ">
             <label //option 1
               onClick={() =>
                 handleOptionChange(
@@ -383,15 +382,17 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                 selectedOption != ""
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
-              }  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem] text-[#012A85]   py-4 px-6 `}
+              }
+              } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] pl-[19px] pr-[23px] `}
             >
-              <span className="truncate min-w-[9.125rem]">
-                {allQuestions
+              <span className="truncate w-[80%]">
+              {allQuestions
                   ? allQuestions?.[currentIndex]?.options[0]
                   : "option 1"}
               </span>
               <span>
                 <img
+                  className="w-8"
                   src={
                     selectedOption === "option_one"
                       ? "/images/checked-tick.png"
@@ -421,7 +422,8 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                 selectedOption != ""
                   ? "pointer-events-none"
                   : "pointer-events-auto	"
-              } outline-none bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]   py-4 px-6 `}
+              }
+               outline-none w-full bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] pl-[19px] pr-[23px]`}
             >
               <span className="truncate min-w-[9.125rem]">
                 {allQuestions
@@ -430,6 +432,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
               </span>
               <span>
                 <img
+                className="w-8"
                   src={
                     selectedOption === "option_two"
                       ? "/images/checked-tick.png"
@@ -443,14 +446,15 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         </div>
       </div>
 
-      <div className="flex  gap-8   px-[3.18rem] w-full font-RiftSoft font-light">
+      <div className="flex  gap-[2.625rem]   px-[2.625rem]  w-full font-RiftSoft font-light">
         <button
           onClick={() => {
             !isRecording && handleNext();
           }}
           className={` ${
             currentIndex < 9 ? "visible" : "invisible"
-          } rounded-[2.37rem] w-1/2  border-[3px] border-solid border-white text-[1.5rem] text-center tracking-[0.72px] leading-[3.43rem] text-white  `}
+          }
+          rounded-[2.37rem] w-1/2  border-[3px] border-solid border-white text-2xl text-center tracking-[0.72px] leading-[3.43rem] text-white  `}
         >
           SKIP
         </button>
@@ -465,7 +469,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
           disabled={selectedOption.trim() !== "" ? false : true}
           className={`
           ${selectedOption.trim() !== "" ? "gradient " : "opacity-50"}
-          rounded-[2.37rem] w-1/2  border-[3px] border-solid border-white text-[1.5rem] text-center tracking-[0.72px] leading-[3.43rem] text-white `}
+            rounded-[2.37rem] w-1/2  border-[3px] border-solid border-white text-2xl  text-center tracking-[0.72px] leading-[3.43rem] text-white `}
         >
           SUBMIT
         </button>

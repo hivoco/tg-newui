@@ -16,9 +16,10 @@ function Animated() {
   }, []);
   return (
     <>
-      {changeScreen === 1 && <AnimatedFirstPage />}
+      <AnimatedThirdPage />
+      {/* {changeScreen === 1 && <AnimatedFirstPage />}
       {changeScreen === 2 && <AnimatedSecondPage />}
-      {changeScreen === 3 && <AnimatedThirdPage />}
+      {changeScreen === 3 && <AnimatedThirdPage />} */}
     </>
   );
 }

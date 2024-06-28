@@ -125,40 +125,43 @@ const Home = ({ setIsMusicAllowed }) => {
         <Animated />
       ) : (
         <div
-          className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  min-h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
+          className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  h-screen   w-screen   bg-center bg-cover    bg-no-repeat relative`}
         >
-          <header className="pt-6 px-6 ">
+          <header className="pt-8 px-6 ">
             <img
-              className="w-[83.21px] h-[73px]"
+              className="w-[86px] h-[80px]"
               src="/images/tgp-logo.png"
               alt="tgp-logo.png"
             />
           </header>
-          <section className="mt-[18px] w-full  ">
+
+          <section className="mt-4  w-full flex flex-col gap-2 ">
             <img
               className={`${
                 animationForUIOpacity
                   ? "opacity-100 transition-all duration-500 delay-200 ease"
                   : " opacity-0 scale-0 -translate-y-32 "
-              } w-[387px] h-[168px]   m-auto  `}
+              }   h-[9.43rem]   m-auto  `}
               src="/images/superstar.png"
               alt="game-logo.png"
             />
+
             <img
               className={`${
                 animationForUIOpacity
                   ? "scale-100 transition-all duration-500 delay-200 ease"
                   : "scale-75 opacity-0"
-              } m-auto w-[292px]`}
+              } m-auto  w-[18.25rem]`}
               src="/images/tag@2x.png"
               alt="game-logo.png"
             />
+
             <img
               className={`${
                 animationForUIOpacity
                   ? "opacity-100 transition-all duration-500 delay-200 ease"
                   : "mt-24 opacity-0"
-              } m-auto mt-[18px] w-[144px]`}
+              } m-auto mt-2 w-36`}
               src="/images/HiVoco Studio@2x.png"
               alt="game-logo.png"
             />
@@ -199,7 +202,7 @@ const Home = ({ setIsMusicAllowed }) => {
                 animationForUIOpacity
                   ? "opacity-100 bottom-10 scale-100 transition-all duration-500 delay-700 ease"
                   : "bottom-0 opacity-0 scale-50"
-              } absolute   h-[75px] rounded-full px-[10px] py-[7px] z-20 `}
+              } absolute w-[10.875rem]   text-2xl  text-center tracking-[0.72px]  leading-[2.875rem]  py-[4.5px]     z-20 rounded-[2.375rem]  `}
               onClick={yourFunction}
             />
             
@@ -208,7 +211,7 @@ const Home = ({ setIsMusicAllowed }) => {
                 animationForUIOpacity
                   ? "opacity-100 bottom-0 scale-100 transition-all duration-500 delay-200 ease"
                   : "bottom-0 opacity-0 scale-50"
-              } absolute  h-[350px] w-full z-10 `}
+              } absolute  h-[21.875rem] w-full z-10 `}
               src="/images/players-home.png"
               alt="game-logo.png"
             />
