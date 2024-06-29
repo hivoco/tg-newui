@@ -14,8 +14,8 @@ const TextToSpeech = ({
   // const API_KEY =   'sk-proj-BeLQ0uFPzdX6835TeUGCT3BlbkFJKCpNBcXhE63skhEm8yie'
 
   const API_KEY = import.meta.env.VITE_API_KEY;
-  console.log(import.meta.env.VITE_API_KEY);
-  console.log(VITE_API_KEY);
+  console.log(`${import.meta.env.VITE_API_KEY}`);
+ 
 
   const handleTextToSpeech = async () => {
     setAudioUrl("");
