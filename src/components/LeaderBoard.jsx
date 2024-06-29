@@ -11,44 +11,50 @@ function LeaderBoard() {
     setanimationForUIOpacity(true);
   }, []);
 
+  // console.log(data);
 
-  
+  const TopThree = data?.filter(
+    (el, index) => data?.indexOf(el) === index && el?.rank <=3
+  );
+
   const table = data?.map((el, index) => {
     return (
-      index > 2 &&  (  <div
-        key={el.rank}
-        className={` pt-[10px] pb-[10.2px]   ${
-          index === data.length - 1
-            ? "bg-gradient-to-r from-[#14915F] to-[#05DE6C] px-11  mt-[1px]"
-            : "bg-[#00195080] mx-6 rounded-lg px-5"
-        } flex gap-[10.5px]  items-center `}
-      >
-        <div className=" flex  gap-8 justify-between    items-center">
-          <span className="font-Barlow  font-medium text-xl leading-[1.5rem] text-white w-[1.375rem] ">
-            {el.rank}
-            <sup>th</sup>
-          </span>
+      (el.rank > 3 || index === data.length - 1) && (
+        <div
+          key={el.rank}
+          className={` pt-[10px] pb-[10.2px]   ${
+            index === data.length - 1
+              ? "bg-gradient-to-r from-[#14915F] to-[#05DE6C] px-11  mt-[1px]"
+              : "bg-[#00195080] mx-6 rounded-lg px-5"
+          } flex gap-[10.5px]  items-center `}
+        >
+          <div className=" flex  gap-8 justify-between    items-center">
+            <span className="font-Barlow  font-medium text-xl leading-[1.5rem] text-white w-[1.375rem] ">
+              {el.rank}
+              <sup>th</sup>
+            </span>
 
-          <img
-            src={`${
-              index === data.length - 1
-                ? "/images/green-player-icon.svg"
-                : "/images/player-icon.png"
-            }  `}
-            className="w-[2.375rem]"
-            alt="player-icon.png"
-          />
-        </div>
+            <img
+              src={`${
+                index === data.length - 1
+                  ? "/images/green-player-icon.svg"
+                  : "/images/player-icon.png"
+              }  `}
+              className="w-[2.375rem]"
+              alt="player-icon.png"
+            />
+          </div>
 
-        <div className="flex w-[70%]  justify-between items-center">
-          <p className="text-nowrap font-RiftSoft font-normal text-lg text-center tracking-[-0.36px] leading-[22px] text-white">
-            {el.name}
-          </p>
-          <p className="text-nowrap font-Barlow font-semibold  leading-[22px] text-white text-right">
-            Pts. {el.score}
-          </p>
+          <div className="flex w-[70%]  justify-between items-center">
+            <p className="text-nowrap font-RiftSoft font-normal text-lg text-center tracking-[-0.36px] leading-[22px] text-white">
+              {el.name}
+            </p>
+            <p className="text-nowrap font-Barlow font-semibold  leading-[22px] text-white text-right">
+              Pts. {el.score}
+            </p>
+          </div>
         </div>
-      </div>)
+      )
     );
   });
 
@@ -93,10 +99,13 @@ function LeaderBoard() {
 
             <div className="flex flex-col items-center">
               <h2 className="font-RiftSoft text-[17px] text-center  tracking-[-0.36px] leading-[1.31rem]  text-white">
-                {data[1]?.name}
+                {/* {data[1]?.name} */}
+                {TopThree[1]?.name}
               </h2>
               <p className="font-Barlow text-lg leading-[1.375rem] text-white">
-                {data[1]?.score}
+                {/* {data[1]?.score} */}
+                {TopThree[1]?.score}
+
               </p>
             </div>
           </div>
@@ -118,10 +127,13 @@ function LeaderBoard() {
 
             <div className="flex flex-col items-center gap-[2px]">
               <h2 className="font-RiftSoft text-lg text-center  tracking-[-0.36px] leading-[1.375rem] uppercase text-white">
-                {data[0]?.name}
+                {/* {data[0]?.name} */}
+                {TopThree[0]?.name}
+
               </h2>
               <p className="font-Barlow text-lg leading-[1.375rem] text-white">
-                {data[0]?.score}{" "}
+                {/* {data[0]?.score}{" "} */}
+                {TopThree[0]?.score}
               </p>
             </div>
           </div>
@@ -143,10 +155,12 @@ function LeaderBoard() {
 
             <div className="flex flex-col items-center ">
               <h2 className="font-RiftSoft text-lg text-center  tracking-[-0.36px] leading-[1.31rem] uppercase text-white">
-                {data[2]?.name}{" "}
+                {/* {data[2]?.name}{" "} */}
+                {TopThree[2]?.name}
               </h2>
               <p className="font-Barlow text-[1.07rem] leading-[1.375rem] text-white">
-                {data[2]?.score}{" "}
+                {/* {data[2]?.score}{" "} */}
+                {TopThree[2]?.score}
               </p>
             </div>
           </div>
