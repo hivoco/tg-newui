@@ -67,13 +67,13 @@ const Login = () => {
               maxLength={10}
             />
 
-            <div className="flex w-full gap-0 items-center bg-white rounded-[13px]">
-              <span className="font-RiftSoft font-bold bg-white text-[1.5625rem] text-[#012A85]  text-left -tracking-[0.5px] leading-[1.9375rem] outline-none   py-[14px] pl-6 border-[4px] border-solid border-[#C2DCE6] border-r-0 rounded-tl-[13px] rounded-bl-[13px]">
+            <div className="flex w-full gap-0 items-center   bg-[#C2DCE6]  rounded-[13px]">
+              <span className="font-RiftSoft font-bold bg-white text-[1.5625rem] text-[#012A85]  text-left -tracking-[0.5px] leading-[1.9375rem] outline-none   py-[14px] pl-6 border-[4px] border-solid border-[#C2DCE6] border-r-0  rounded-r-none rounded-tl-[13px] rounded-bl-[13px]">
                 +91
               </span>
 
               <input
-                className="font-RiftSoft font-bold  text-[1.5625rem] text-[#012A85]   text-left -tracking-[0.5px] leading-[1.9375rem]  outline-none  py-[14px] pl-2 pr-6 border-[4px] border-solid border-[#C2DCE6]   border-l-0 rounded-tr-[13px] rounded-br-[13px]"
+                className=" font-RiftSoft font-bold  text-[1.5625rem] text-[#012A85]   text-left -tracking-[0.5px] leading-[1.9375rem]  outline-none  py-[14px] pl-2 pr-6 border-[4px] border-solid border-[#C2DCE6]   border-l-0 rounded-l-none rounded-tr-[13px] rounded-br-[13px]"
                 inputMode="numeric"
                 name="number"
                 minLength={10}

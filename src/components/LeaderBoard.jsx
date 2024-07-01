@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CommanHeader from "./CommanHeader";
 
 function LeaderBoard() {
-  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
+  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);// false
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -11,17 +11,36 @@ function LeaderBoard() {
     setanimationForUIOpacity(true);
   }, []);
 
-  // console.log(data);
+  // const data = [
+  //   { rank: 1, score: 9, name: "Sam" },
+  //   { rank: 2, score: 8, name: "Jack" },
+  //   { rank: 3, score: 7, name: "Bob" },
+  //   { rank: 4, score: 7, name: "Charlie" },
+  //   { rank: 5, score: 7, name: "Diana" },
+  //   { rank: 6, score: 3, name: "Eve" },
+  //   { rank: 7, score: 3, name: "Frank" },
+  //   { rank: 8, score: 3, name: "Grace" },
+  //   { rank: 9, score: 1, name: "Hank" },
+  //   { rank: 10, score: 0, name: "Ivy" },
+  //   { rank: 7, score: 3, name: "Frank" },
+  // ];
+  
+  
+  
+console.log(data);
 
-  const TopThree = data?.filter(
-    (el, index) => data?.indexOf(el) === index && el?.rank <=3
-  );
+// const uniqueData = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+// const TopThree = uniqueData.sort((a, b) => b.points - a.points).slice(0, 3);
+
+  const TopThree = Array.from(new Set(data?.filter(el => el?.rank <= 3)))
+
+  console.log(TopThree);
 
   const table = data?.map((el, index) => {
     return (
-      (el.rank > 3 || index === data.length - 1) && (
+      (el?.rank > 3 || index === data.length - 1) && (
         <div
-          key={el.rank}
+          key={index}
           className={` pt-[10px] pb-[10.2px]   ${
             index === data.length - 1
               ? "bg-gradient-to-r from-[#14915F] to-[#05DE6C] px-11  mt-[1px]"
@@ -30,7 +49,7 @@ function LeaderBoard() {
         >
           <div className=" flex  gap-8 justify-between    items-center">
             <span className="font-Barlow  font-medium text-xl leading-[1.5rem] text-white w-[1.375rem] ">
-              {el.rank}
+              {el ? el.rank : "loading"}
               <sup>th</sup>
             </span>
 
@@ -47,10 +66,11 @@ function LeaderBoard() {
 
           <div className="flex w-[70%]  justify-between items-center">
             <p className="text-nowrap font-RiftSoft font-normal text-lg text-center tracking-[-0.36px] leading-[22px] text-white">
-              {el.name}
+              {el ? (index === data.length - 1 ? "YOU" : el.name) : "Loading"}
+              {/* {el.name} */}
             </p>
             <p className="text-nowrap font-Barlow font-semibold  leading-[22px] text-white text-right">
-              Pts. {el.score}
+              Pts. {el ? el?.score : "loading"}
             </p>
           </div>
         </div>
