@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import CommanHeader from "./CommanHeader";
 
 function LeaderBoard() {
-  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);// false
+  const [animationForUIOpacity, setanimationForUIOpacity] = useState(false); // false
 
   const [data, setData] = useState([]);
   useEffect(() => {
@@ -10,6 +10,14 @@ function LeaderBoard() {
     setData(res?.winner);
     setanimationForUIOpacity(true);
   }, []);
+
+  function displayRank(rank) {
+    if (rank >= 1000 && rank <= 99999) {
+      (rank / 1000).toFixed(0) + "k";
+    } else if (rank >= 100000) {
+      (rank / 100000).toFixed(0) + "L";
+    }
+  }
 
   // const data = [
   //   { rank: 1, score: 9, name: "Sam" },
@@ -24,15 +32,13 @@ function LeaderBoard() {
   //   { rank: 10, score: 0, name: "Ivy" },
   //   { rank: 7, score: 3, name: "Frank" },
   // ];
-  
-  
-  
-console.log(data);
 
-// const uniqueData = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
-// const TopThree = uniqueData.sort((a, b) => b.points - a.points).slice(0, 3);
+  console.log(data);
 
-  const TopThree = Array.from(new Set(data?.filter(el => el?.rank <= 3)))
+  // const uniqueData = Array.from(new Set(data.map(item => JSON.stringify(item)))).map(item => JSON.parse(item));
+  // const TopThree = uniqueData.sort((a, b) => b.points - a.points).slice(0, 3);
+
+  const TopThree = Array.from(new Set(data?.filter((el) => el?.rank <= 3)));
 
   console.log(TopThree);
 
@@ -49,8 +55,9 @@ console.log(data);
         >
           <div className=" flex  gap-8 justify-between    items-center">
             <span className="font-Barlow  font-medium text-xl leading-[1.5rem] text-white w-[1.375rem] ">
-              {el ? el.rank : "loading"}
-              <sup>th</sup>
+              {!el && "loading"}
+              {el?.rank < 1000 ? el.rank : displayRank(el.rank)}
+              {el.rank < 1000 && <sup>th</sup>}
             </span>
 
             <img
@@ -125,7 +132,6 @@ console.log(data);
               <p className="font-Barlow text-lg leading-[1.375rem] text-white">
                 {/* {data[1]?.score} */}
                 {TopThree[1]?.score}
-
               </p>
             </div>
           </div>
@@ -149,7 +155,6 @@ console.log(data);
               <h2 className="font-RiftSoft text-lg text-center  tracking-[-0.36px] leading-[1.375rem] uppercase text-white">
                 {/* {data[0]?.name} */}
                 {TopThree[0]?.name}
-
               </h2>
               <p className="font-Barlow text-lg leading-[1.375rem] text-white">
                 {/* {data[0]?.score}{" "} */}
