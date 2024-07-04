@@ -216,7 +216,7 @@ const Home = ({ setIsMusicAllowed }) => {
                 animationForUIOpacity
                   ? "opacity-100 bottom-0 scale-100 transition-all duration-500 delay-200 ease"
                   : "bottom-0 opacity-0 scale-50 "
-              } absolute  h-[21.875rem] w-full z-10 ml-[1px] `}
+              } absolute  h-[21.875rem] w-full z-10 ml-[2px] `}
               src="/images/new-players-home.png"
               alt="game-logo.png"
             />
