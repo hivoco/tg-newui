@@ -63,7 +63,7 @@ function AnimatedSecondPage() {
 
           <img
             className="absolute bottom-3  left-[15px] w-[2.81rem]"
-            src="/images/veg_disclainer@2x.png"
+            src="/images/veg_disclainer.svg"
             alt="game-logo.png"
           />
           <div className="flex justify-center">

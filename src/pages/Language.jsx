@@ -39,131 +39,130 @@ function Language() {
         />
       </header>
       <div className="px-[18px] mt-[18px]">
-          <div className="flex justify-center items-center flex-col gap-[2px]">
-            <small className="font-RiftSoft text-3xl  text-white w-auto">
-              CHOOSE LANGUAGE
-            </small>
-            <div className="text-white text-center  mx-auto  font-Barlow font-thin">
-              <p>Be comfortable and give your best</p>
+        <div className="flex justify-center items-center flex-col gap-[2px]">
+          <small className="font-RiftSoft text-3xl  text-white w-auto">
+            CHOOSE LANGUAGE
+          </small>
+          <div className="text-white text-center  mx-auto  font-Barlow font-thin">
+            <p>Be comfortable and give your best</p>
+          </div>
+        </div>
+
+        <section className=" w-full ">
+          <div
+            onClick={() => setSelectedLanguage("english")}
+            className={`${
+              animationForUIOpacity
+                ? " transition-all duration-500 delay-700 ease-in"
+                : "flip-90"
+            } flex  justify-center items-center flex-col  gap-[6px] mt-4`}
+          >
+            <div
+              className={`${
+                selectedLanguage == "english" ? "hexagon_selected " : "hexagon"
+              } 
+                
+                hexagon flex justify-center items-center`}
+            >
+              <h1 className="gradient-text text-3xl font-medium text-red z-50">
+                A
+              </h1>
             </div>
+            <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
+              English
+            </p>
           </div>
 
-          <section className=" w-full ">
+          <div className="flex justify-around items-center mt-3">
             <div
-              onClick={() => setSelectedLanguage("english")}
+              onClick={() => setSelectedLanguage("hindi")}
               className={`${
                 animationForUIOpacity
                   ? " transition-all duration-500 delay-700 ease-in"
                   : "flip-90"
-              } flex  justify-center items-center flex-col  gap-[6px] mt-4`}
+              } flex justify-center items-center flex-col  gap-[6px]`}
             >
               <div
                 className={`${
-                  selectedLanguage == "english" ? "hexagon_selected " : "hexagon"
-                } 
-                
-                hexagon flex justify-center items-center`}
+                  selectedLanguage == "hindi" ? "hexagon_selected " : "hexagon"
+                } hexagon flex justify-center items-center`}
               >
                 <h1 className="gradient-text text-3xl font-medium text-red z-50">
-                  A
+                  अ
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
-                English
+                Hindi
               </p>
             </div>
-
-            
-            <div className="flex justify-around items-center mt-3">
+            <div
+              onClick={() => setSelectedLanguage("tamil")}
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in "
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-[6px]`}
+            >
               <div
-                onClick={() => setSelectedLanguage("hindi")}
                 className={`${
-                  animationForUIOpacity
-                    ? " transition-all duration-500 delay-700 ease-in"
-                    : "flip-90"
-                } flex justify-center items-center flex-col  gap-[6px]`}
+                  selectedLanguage == "tamil" ? "hexagon_selected " : "hexagon"
+                } hexagon flex justify-center items-center `}
               >
-                <div
-                  className={`${
-                    selectedLanguage == "hindi" ? "hexagon_selected " : "hexagon"
-                  } hexagon flex justify-center items-center`}
-                >
-                  <h1 className="gradient-text text-3xl font-medium text-red z-50">
-                    अ
-                  </h1>
-                </div>
-                <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
-                  Hindi
-                </p>
+                <h1 className=" gradient-text text-3xl font-medium text-red z-50">
+                  அ
+                </h1>
               </div>
-              <div
-                onClick={() => setSelectedLanguage("tamil")}
-                className={`${
-                  animationForUIOpacity
-                    ? " transition-all duration-500 delay-700 ease-in "
-                    : "flip-90"
-                } flex justify-center items-center flex-col  gap-[6px]`}
-              >
-                <div
-                  className={`${
-                    selectedLanguage == "tamil" ? "hexagon_selected " : "hexagon"
-                  } hexagon flex justify-center items-center `}
-                >
-                  <h1 className=" gradient-text text-3xl font-medium text-red z-50">
-                    அ
-                  </h1>
-                </div>
-                <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
-                  Tamil
-                </p>
-              </div>
+              <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
+                Tamil
+              </p>
             </div>
-            <div className="flex justify-around items-center mt-3">
+          </div>
+          <div className="flex justify-around items-center mt-3">
+            <div
+              onClick={() => setSelectedLanguage("telugu")}
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in "
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-[6px]`}
+            >
               <div
-                onClick={() => setSelectedLanguage("telugu")}
                 className={`${
-                  animationForUIOpacity
-                    ? " transition-all duration-500 delay-700 ease-in "
-                    : "flip-90"
-                } flex justify-center items-center flex-col  gap-[6px]`}
+                  selectedLanguage === "telugu" ? "hexagon_selected" : "hexagon"
+                } hexagon flex justify-center items-center`}
               >
-                <div
-                  className={`${
-                    selectedLanguage === "telugu" ? "hexagon_selected" : "hexagon"
-                  } hexagon flex justify-center items-center`}
-                >
-                  <h1 className=" gradient-text text-3xl font-medium text-red z-50">
-                    తె
-                  </h1>
-                </div>
-                <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
-                  Telugu
-                </p>
+                <h1 className=" gradient-text text-3xl font-medium text-red z-50">
+                  తె
+                </h1>
               </div>
-              <div
-                // onClick={() => setSelectedLanguage("bangla")}
-                className={`${
-                  animationForUIOpacity
-                    ? " transition-all duration-500 delay-700 ease-in opacity-70"
-                    : "flip-90"
-                } flex justify-center items-center flex-col  gap-[6px]`}
-              >
-                <div
-                  className={`${
-                    selectedLanguage == "bangla" ? "hexagon_selected " : "hexagon"
-                  } hexagon flex justify-center items-center`}
-                >
-                  <h1 className=" text-lg font-medium text-blue-700 z-50 text-center">
-                    {/* ঝ */}
-                    Coming Soon
-                  </h1>
-                </div>
-                <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
-                  Bangla
-                </p>
-              </div>
+              <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
+                Telugu
+              </p>
             </div>
-          </section>
+            <div
+              // onClick={() => setSelectedLanguage("bangla")}
+              className={`${
+                animationForUIOpacity
+                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
+                  : "flip-90"
+              } flex justify-center items-center flex-col  gap-[6px]`}
+            >
+              <div
+                className={`${
+                  selectedLanguage == "bangla" ? "hexagon_selected " : "hexagon"
+                } hexagon flex justify-center items-center`}
+              >
+                <h1 className=" text-lg font-medium text-blue-700 z-50 text-center">
+                  {/* ঝ */}
+                  Coming Soon
+                </h1>
+              </div>
+              <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
+                Bangla
+              </p>
+            </div>
+          </div>
+        </section>
 
         <section className="mb-[7.25rem]  mt-8 w-full flex justify-center">
           {/* <GradientButton
@@ -188,8 +187,8 @@ function Language() {
         </section>
 
         <img
-          className="absolute bottom-[14px] left-[15px] w-[2.81rem]"
-          src="/images/veg_disclainer@2x.png"
+          className="absolute bottom-[14px] left-[15px] w-[3rem]"
+          src="/images/veg_disclainer.svg"
           alt="game-logo.png"
         />
         <div className="flex justify-center">

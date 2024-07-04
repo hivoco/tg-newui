@@ -50,7 +50,10 @@ function InformationPage() {
         </section>
 
         <section className=" w-full mt-20 ">
-         <input className="w-80 h-20 rounded-full p-5"  placeholder="Write Your Name"/>
+          <input
+            className="w-80 h-20 rounded-full p-5"
+            placeholder="Write Your Name"
+          />
         </section>
         <section className="mb-32 mt-[25px] w-full flex justify-center">
           <GradientButton onClick={""} title="VIEW LEADERBOARD" />
@@ -58,7 +61,7 @@ function InformationPage() {
 
         <img
           className="absolute bottom-[14px] left-[15px] w-[45px]"
-          src="/images/veg_disclainer@2x.png"
+          src="/images/veg_disclainer.svg"
           alt="game-logo.png"
         />
         <div className="flex justify-center">

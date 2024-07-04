@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Animated from "./Animated";
 import { preloadImages } from "../components/preloadImages";
 import Popup from "../components/Popup";
@@ -25,10 +25,11 @@ const Home = ({ setIsMusicAllowed }) => {
 
   const images = [
     "/images/LeaderBoardBg.png",
-    '/images/Login-bg.png',
-    '/images/bg_quiz_screen.png',
+    "/images/Login-bg.png",
+    "/images/bg_quiz_screen.png",
     "/images/splash-bg@2x.png",
-    "/images/players-home.png",
+    // "/images/players-home.png",
+    "/images/new-players-home.png",
     "/images/loader_screen_bg@2x.png",
     "/images/player-loading.png",
     "/images/SignedJerseys1@2x.png",
@@ -50,8 +51,7 @@ const Home = ({ setIsMusicAllowed }) => {
   useEffect(() => {
     const preloadedImages = preloadImages(images);
     Promise.all(preloadedImages.map((img) => img.decode()))
-      .then(() => 
-        setLoaded(true))
+      .then(() => setLoaded(true))
       .catch((error) => console.error("Image failed to load", error));
   }, []);
 
@@ -148,7 +148,7 @@ const Home = ({ setIsMusicAllowed }) => {
                 alt="game-logo.png"
               />
 
-            <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2">
                 <img
                   className={`${
                     animationForUIOpacity
@@ -168,7 +168,7 @@ const Home = ({ setIsMusicAllowed }) => {
                   src="/images/HiVoco Studio@2x.png"
                   alt="game-logo.png"
                 />
-            </div>
+              </div>
             </section>
           </div>
 
@@ -217,7 +217,7 @@ const Home = ({ setIsMusicAllowed }) => {
                   ? "opacity-100 bottom-0 scale-100 transition-all duration-500 delay-200 ease"
                   : "bottom-0 opacity-0 scale-50"
               } absolute  h-[21.875rem] w-full z-10 `}
-              src="/images/players-home.png"
+              src="/images/new-players-home.png"
               alt="game-logo.png"
             />
           </section>

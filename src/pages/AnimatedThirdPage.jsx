@@ -7,12 +7,12 @@ function AnimatedThirdPage() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
 
   useEffect(() => {
-     let timer = setTimeout(() => {
-       setanimationForUIOpacity(true);
-     }, 700);
-     return () => {
-       clearTimeout(timer);
-     };
+    let timer = setTimeout(() => {
+      setanimationForUIOpacity(true);
+    }, 700);
+    return () => {
+      clearTimeout(timer);
+    };
   }, []);
 
   const handleClick = () => {
@@ -75,8 +75,12 @@ function AnimatedThirdPage() {
                 Win Gaming Contest.
               </p>
 
-              <p onClick={()=>navigate('/terms-and-conditions')} className="underline ">Click here to view T&C</p>
-
+              <p
+                onClick={() => navigate("/terms-and-conditions")}
+                className="underline "
+              >
+                Click here to view T&C
+              </p>
             </div>
 
             <GradientButton
@@ -93,7 +97,7 @@ function AnimatedThirdPage() {
 
         <img
           className="absolute bottom-3  left-3 w-[2.8125rem]"
-          src="/images/veg_disclainer@2x.png"
+          src="/images/veg_disclainer.svg"
           alt="game-logo.png"
         />
         <div className="flex justify-center">

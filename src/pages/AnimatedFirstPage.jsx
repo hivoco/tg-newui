@@ -33,7 +33,7 @@ function AnimatedFirstPage() {
         src="/images/player-loading.png "
         alt="game-logo.png"
       />
-      
+
       <div className="px-[18px] ">
         <section
           className={`relative z-20 gap-12  ${
@@ -64,12 +64,11 @@ function AnimatedFirstPage() {
               <span className="dot3 mx-1">.</span>
             </div>
           </div>
-
         </section>
 
         <img
           className="absolute bottom-[14px] left-[15px] w-[2.815rem]"
-          src="/images/veg_disclainer@2x.png"
+          src="/images/veg_disclainer.svg"
           alt="game-logo.png"
         />
 
