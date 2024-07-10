@@ -18,6 +18,7 @@ import Popup from "./Popup";
 import SoundOnAnswer from "./SoundOnAnswer";
 import VerifyLoading from "./VerifyLoading";
 import CommanHeader from "./CommanHeader";
+import AudioPrompt from "./AudioPrompt";
 
 function RecorderQuiz({ setIsMusicAllowed, platform }) {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
   const [isQuizQuestionLoading, setIsQuizQuestionLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [permissionToStartSound, setPermissionToStartSound] = useState(true); //
+  const [permissionToStartSound, setPermissionToStartSound] = useState(false); // changed to true
   const [openSoundPopup, setOpenSoundPopup] = useState(true);
   const [audioTime, setAudioTime] = useState(20);
   const [micOnTime, setMicOnTime] = useState(0);
@@ -292,6 +293,14 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
     setAllQuestions(res);
   }, []);
+
+  useEffect(() => {
+    if (audioRef.current && permissionToStartSound) {
+      audioRef.current.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
+    }
+  }, [permissionToStartSound, currentIndex]);
   return (
     <div
       className={`${
@@ -435,7 +444,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
                outline-none w-full bg-center bg-contain bg-no-repeat flex justify-between items-center  font-light text-[1.56rem]    tracking-[-0.5px] leading-[1.93rem]    py-[17px] px-6`}
             >
               <span className="whitespace-nowrap	overflow-x-scroll w-[80%] ">
-              {allQuestions
+                {allQuestions
                   ? allQuestions?.[currentIndex]?.options[1]
                   : "option 2"}
               </span>
@@ -484,10 +493,11 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
       {permissionToStartSound ? (
         <audio
+          className="hidden"
           ref={audioRef}
-          autoPlay={true}
           src={`data:audio/wav;base64,${allQuestions?.[currentIndex]?.audio}`}
           type="audio/mpeg"
+          controls
         ></audio>
       ) : (
         ""
@@ -504,6 +514,12 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
 
       {isLoading && <VerifyLoading />}
       {isQuizQuestionLoading && <VerifyLoading />}
+      {openSoundPopup && (
+        <AudioPrompt
+          setOpenSoundPopup={setOpenSoundPopup}
+          setPermissionToStartSound={setPermissionToStartSound}
+        />
+      )}
 
       <SoundOnAnswer
         questionStatus={questionStatus}

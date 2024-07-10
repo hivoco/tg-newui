@@ -9,6 +9,7 @@ import AudioTimer from "./AudioTimer.jsx";
 import useSpeechRecognition from "../utils/useSpeechRecognition";
 import VerifyLoading from "./VerifyLoading.jsx";
 import SoundOnAnswer from "./SoundOnAnswer.jsx";
+import AudioPrompt from "./AudioPrompt.jsx";
 
 function Quiz({ setIsMusicAllowed, platform }) {
   const {
@@ -36,7 +37,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
   const [seconds, setSeconds] = useState(30);
 
-  const [permissionToStartSound, setPermissionToStartSound] = useState(true); // changed to true
+  const [permissionToStartSound, setPermissionToStartSound] = useState(false); // changed to true
   const [openSoundPopup, setOpenSoundPopup] = useState(true);
 
   const [audioTime, setAudioTime] = useState(20);
@@ -62,7 +63,6 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setOpenSoundPopup(true);
   }, 200);
 
-
   useEffect(() => {
     const res = getQuestion();
     setAllQuestions(res);
@@ -83,7 +83,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
     setMicOnTime(0);
     setSpeechText("");
     setSelectedOption("");
-      setIsAnswered(false);
+    setIsAnswered(false);
     setCurrentIndex((prevIndex) => (prevIndex > 8 ? 9 : prevIndex + 1));
     if (currentIndex < 9) {
       setAudioTime(allQuestions?.[currentIndex + 1]?.audio_time);
@@ -191,7 +191,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
   const enter = async (question_id) => {
     if (abortControllerRef.current) {
       abortControllerRef.current.abort();
-      return
+      return;
     }
     let value = speechText.trim();
 
@@ -272,6 +272,14 @@ function Quiz({ setIsMusicAllowed, platform }) {
     navigate("/login");
   };
 
+  useEffect(() => {
+    if (audioRef.current && permissionToStartSound) {
+      audioRef.current.play().catch((error) => {
+        console.error("Audio playback failed:", error);
+      });
+    }
+  }, [permissionToStartSound, currentIndex]);
+
   return (
     <div
       className={`${
@@ -295,14 +303,16 @@ function Quiz({ setIsMusicAllowed, platform }) {
               <p className=" opacity-70"> Question {currentIndex + 1}/10 </p>
 
               <p className="opacity-70">
-                <Timer
-                  seconds={seconds}
-                  setSeconds={setSeconds}
-                  onTimeout={handleNext}
-                  index={currentIndex}
-                  isQuizQuestionLoading={isQuizQuestionLoading}
-                  autoSubmit={viewScore}
-                />
+                {!openSoundPopup && (
+                  <Timer
+                    seconds={seconds}
+                    setSeconds={setSeconds}
+                    onTimeout={handleNext}
+                    index={currentIndex}
+                    isQuizQuestionLoading={isQuizQuestionLoading}
+                    autoSubmit={viewScore}
+                  />
+                )}
               </p>
             </div>
 
@@ -378,7 +388,7 @@ function Quiz({ setIsMusicAllowed, platform }) {
               } w-full	  outline-none bg-no-repeat bg-center bg-contain  flex justify-between items-center  font-light text-2xl    tracking-[-0.48px] leading-[29px] text-[#012A85]   py-[17px] px-6 `}
             >
               <span className="whitespace-nowrap	overflow-x-scroll w-[80%] ">
-              {allQuestions
+                {allQuestions
                   ? allQuestions?.[currentIndex]?.options[0]
                   : "option 1"}
               </span>
@@ -473,10 +483,11 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
       {permissionToStartSound ? (
         <audio
+          className="hidden"
           ref={audioRef}
-          autoPlay={true}
           src={`data:audio/wav;base64,${allQuestions?.[currentIndex]?.audio}`}
           type="audio/mpeg"
+          controls
         ></audio>
       ) : (
         ""
@@ -493,6 +504,12 @@ function Quiz({ setIsMusicAllowed, platform }) {
 
       {isLoading && <VerifyLoading />}
       {isQuizQuestionLoading && <VerifyLoading />}
+      {openSoundPopup && (
+        <AudioPrompt
+          setOpenSoundPopup={setOpenSoundPopup}
+          setPermissionToStartSound={setPermissionToStartSound}
+        />
+      )}
 
       <SoundOnAnswer
         questionStatus={questionStatus}

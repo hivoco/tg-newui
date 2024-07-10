@@ -191,7 +191,11 @@ function LeaderBoard() {
           </div>
         </div>
       </div>
-
+      <img
+        src="https://trk.mrndigital.in/pixel?av=65438668f136ac49a726861c"
+        alt="Tracking Pixel"
+        style={{ display: "none" }}
+      />
       <div className=" flex flex-col gap-[3.8px]">{table}</div>
     </div>
   );
