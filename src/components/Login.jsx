@@ -15,7 +15,7 @@ const Login = () => {
       `/after_login_update
       `,
       {
-        name: name,
+        name: name.slice(0, 10),
         phone: phone,
         uuid: sessionStorage.getItem("unique_id"),
       }
@@ -100,7 +100,11 @@ const Login = () => {
             "rounded-[38px] font-semibold  text-2xl tracking-[0.72px] leading-[3.4375rem] px-[4.25rem]"
           }
         />
-        <img className="h-10" src="/images/HiVoco Studio@2x.png" alt="HiVoco Studio logo" />
+        <img
+          className="h-10"
+          src="/images/HiVoco Studio@2x.png"
+          alt="HiVoco Studio logo"
+        />
       </div>
     </div>
   );
