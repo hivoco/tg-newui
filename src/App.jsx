@@ -42,10 +42,10 @@ function App() {
           path="/"
           element={<Home setIsMusicAllowed={setIsMusicAllowed} />}
         />
-        
+
         <Route path="/select-language" element={<Language />} />
 
-        <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
         <Route path="/login" element={<Login />} />
 
@@ -58,7 +58,10 @@ function App() {
           />
         </Route>
 
-        <Route path="/login" element={<Login />} />
+        {/* <Route path="/login" element={<Login />} /> */}
+        <Route path="/login" element={<ProtectedRoute />}>
+          <Route path="" element={<Login />} />
+        </Route>
 
         <Route path="/result/access-your-leader" element={<ProtectedRoute />}>
           <Route path="" element={<LeaderBoard />} />
