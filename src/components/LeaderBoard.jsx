@@ -11,11 +11,13 @@ function LeaderBoard() {
     setanimationForUIOpacity(true);
   }, []);
 
-  function displayRank(rank) {
-    if (rank >= 1000 && rank <= 99999) {
-      (rank / 1000).toFixed(0) + "k";
-    } else if (rank >= 100000) {
-      (rank / 100000).toFixed(0) + "L";
+  function displayRank(number) {
+    if (number >= 1000000) {
+      return (number / 1000000).toFixed(1) + "M";
+    } else if (number >= 1000) {
+      return (number / 1000).toFixed(1) + "K";
+    } else {
+      return number.toString();
     }
   }
 
