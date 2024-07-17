@@ -3,19 +3,32 @@ import GradientButton from "../components/GradientButton";
 import { useNavigate } from "react-router-dom";
 import { getPlatform } from "../utils/helperFunction";
 import axios from "../api/instance.js";
+import Popup from "../components/Popup.jsx";
+import DynamicLoading from "../components/DynamicLoading.jsx";
 
 function Language() {
   const [animationForUIOpacity, setanimationForUIOpacity] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("");
 
   const [platform, setPlatform] = useState("");
+  const [loading, setLoading] = useState(false);
 
+  const messages = [
+    "Please wait...",
+    "Fetching question for you from database...",
+    "Preparing quiz for you...",
+    "We are about to finish this process...",
+    "Ready to display....",
+    "Please wait...",
+  ];
   const getUniqueID = async () => {
+    setLoading(true);
     const responce = await axios(`/guest_user?name=&phone=`);
     sessionStorage.setItem("unique_id", responce.data.unique_id);
     navigate(
       `/quiz/play?lang=${selectedLanguage?.toLowerCase()}&platform=${platform}`
     );
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -199,6 +212,11 @@ function Language() {
           />
         </div>
       </div>
+      {loading && (
+        <Popup bg="transparent">
+          <DynamicLoading messages={messages} />
+        </Popup>
+      )}
     </div>
   );
 }

@@ -2,6 +2,8 @@ import GradientButton from "./GradientButton";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/instance.js";
+import DynamicLoading from "./DynamicLoading.jsx";
+import Popup from "./Popup.jsx";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -11,6 +13,7 @@ const Login = () => {
     if (!phone) {
       return;
     }
+    setLoading(true);
     const d = await axios.post(
       `/after_login_update
       `,
@@ -21,8 +24,19 @@ const Login = () => {
       }
     );
     sessionStorage.setItem("user_data", JSON.stringify(d.data));
+    setLoading(false);
     navigate("/result/access-your-leader");
   };
+
+  const [loading, setLoading] = useState(false);
+
+  const messages = [
+    "Please wait...",
+    "Fetching data from database...",
+    "Please wait while we calculate your rank based on quiz answers...",
+    "Loading the top 10 users data from database...",
+    "Preparing to display your personalized dashboard...",
+  ];
 
   return (
     <div className="flex flex-col gap-9  bg-[url('/images/Login-bg.png')] bg-no-repeat bg-center  w-screen min-h-screen pt-[2.37rem] pb-[7.25rem] px-9">
@@ -106,6 +120,12 @@ const Login = () => {
           alt="HiVoco Studio logo"
         />
       </div>
+
+      {loading && (
+        <Popup bg="transparent">
+          <DynamicLoading messages={messages} />
+        </Popup>
+      )}
     </div>
   );
 };
