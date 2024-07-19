@@ -153,10 +153,10 @@ function Language() {
               </p>
             </div>
             <div
-              // onClick={() => setSelectedLanguage("bangla")}
+              onClick={() => setSelectedLanguage("bangla")}
               className={`${
                 animationForUIOpacity
-                  ? " transition-all duration-500 delay-700 ease-in opacity-70"
+                  ? " transition-all duration-500 delay-700 ease-in "
                   : "flip-90"
               } flex justify-center items-center flex-col  gap-[6px]`}
             >
@@ -165,9 +165,8 @@ function Language() {
                   selectedLanguage == "bangla" ? "hexagon_selected " : "hexagon"
                 } hexagon flex justify-center items-center`}
               >
-                <h1 className=" text-lg font-medium text-blue-700 z-50 text-center">
-                  {/* ঝ */}
-                  Coming Soon
+                <h1 className=" gradient-text text-3xl font-medium text-red z-50">
+                  ঝ{/* Coming Soon */}
                 </h1>
               </div>
               <p className="text-white text-center  mx-auto text-lg  font-Barlow font-normal">
