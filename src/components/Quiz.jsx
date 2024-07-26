@@ -511,13 +511,13 @@ function Quiz({ setIsMusicAllowed, platform }) {
         />
       )}
 
-      <SoundOnAnswer
+      {/* <SoundOnAnswer
         questionStatus={questionStatus}
         replyAudio={replyAudio}
         setQuestionStatus={setQuestionStatus}
         setReplyAudio={setReplyAudio}
         language={lang.toLowerCase()}
-      />
+      /> */}
     </div>
   );
 }
