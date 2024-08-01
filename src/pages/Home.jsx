@@ -25,7 +25,7 @@ const Home = ({ setIsMusicAllowed }) => {
 
   const images = [
     "/images/LeaderBoardBg.png",
-    "/images/Login-bg.png",
+    "/images/demo-admin/login-bg.png",
     "/images/bg_quiz_screen.png",
     "/images/splash-bg@2x.png",
     // "/images/players-home.png",
@@ -38,6 +38,10 @@ const Home = ({ setIsMusicAllowed }) => {
     "/images/ribbon_gift_coupon@2x (1).png",
     "/images/ribbon_jerseys@2x (1).png",
     "/images/top_winners@2x (1).png",
+    "tcis.png",
+    "wus.png",
+    "fyii.png",
+    "thanks.png",
 
     "/images/superstar.png",
     "/images/pre_loader.png",
@@ -125,6 +129,35 @@ const Home = ({ setIsMusicAllowed }) => {
       {startSplashScreen ? (
         <Animated />
       ) : (
+        // <div
+        //   className={`   border border-blue-800
+        // container bg-[url('/images/SignedJerseys1@2x.png')] min-h-screen  w-screen   bg-center bg-cover    bg-no-repeat relative`}
+        // >
+        //   <div className="flex flex-col justify-center gap-20 w-full h-screen items-center ">
+        //     <div className="flex flex-col justify-center items-center gap-5  ">
+        //       <img className=" " src="/images/thanks.png" alt="thanks.png" />
+        //       <img className=" " src="/images/fyii.png" alt="thanks.png" />
+        //     </div>
+
+        //     <img
+        //       className="w-[5.375rem] h-[5rem] "
+        //       src="/images/tgp-logo.png"
+        //       alt="tgp-logo.png"
+        //     />
+
+        //     <div className="flex flex-col justify-center items-center gap-5  ">
+        //       <img className=" " src="/images/tcis.png" alt="thanks.png" />
+        //       <img className=" " src="/images/wus.png" alt="thanks.png" />
+        //     </div>
+        //   </div>
+        //   <div className="flex justify-center">
+        //     <img
+        //       className="absolute bottom-[1.75rem] w-[9rem]"
+        //       src="/images/HiVoco Studio@2x.png"
+        //       alt="game-logo.png"
+        //     />
+        //   </div>
+        // </div>
         <div
           className={`animate-fadeIn container bg-[url('/images/splash-bg@2x.png')]  h-screen   w-screen   bg-center  bg-cover bg-no-repeat relative overflow-x-hidden `}
         >

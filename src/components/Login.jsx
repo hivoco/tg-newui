@@ -25,7 +25,7 @@ const Login = () => {
     );
     sessionStorage.setItem("user_data", JSON.stringify(d.data));
     setLoading(false);
-    navigate("/result/access-your-leader");
+    navigate("/demo-admin/result/access-your-leader");
   };
 
   const [loading, setLoading] = useState(false);
@@ -39,7 +39,7 @@ const Login = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-9  bg-[url('/images/Login-bg.png')] bg-no-repeat bg-center  w-screen min-h-screen pt-[2.37rem] pb-[7.25rem] px-9">
+    <div className="flex flex-col gap-9  bg-[url('/images/demo-admin/login-bg.png')] bg-no-repeat bg-center  w-screen min-h-screen pt-[2.37rem] pb-[7.25rem] px-9">
       <div className="flex flex-col gap-[2.19rem]">
         <div className=" flex flex-col gap-[14px] items-center ">
           <img

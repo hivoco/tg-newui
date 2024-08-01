@@ -267,7 +267,7 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
   const viewScore = async () => {
     await setDataBeforeLogin(userResponceArray);
     setIsMusicAllowed(true);
-    navigate("/login");
+    navigate("/demo-admin/login");
   };
 
   useEffect(() => {
@@ -521,13 +521,13 @@ function RecorderQuiz({ setIsMusicAllowed, platform }) {
         />
       )}
 
-      {/* <SoundOnAnswer
+      <SoundOnAnswer
         questionStatus={questionStatus}
         replyAudio={replyAudio}
         setQuestionStatus={setQuestionStatus}
         setReplyAudio={setReplyAudio}
         language={lang.toLowerCase()}
-      /> */}
+      />
     </div>
   );
 }

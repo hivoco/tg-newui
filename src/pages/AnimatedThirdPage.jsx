@@ -16,7 +16,7 @@ function AnimatedThirdPage() {
   }, []);
 
   const handleClick = () => {
-    navigate("/select-language");
+    navigate("/demo-admin/select-language");
   };
   return (
     <div
@@ -76,7 +76,7 @@ function AnimatedThirdPage() {
               </p>
 
               <p
-                onClick={() => navigate("/terms-and-conditions")}
+                onClick={() => navigate("/demo-admin/terms-and-conditions")}
                 className="underline "
               >
                 Click here to view T&C

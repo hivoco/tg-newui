@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PlateformWiseQuiz from "./components/PlateformWiseQuiz";
 import TermsAndConditions from "./components/TermsAndConditions";
+import Finish from "./pages/Finish";
 
 function App() {
   const [isMusicAllowed, setIsMusicAllowed] = useState(false);
@@ -40,14 +41,21 @@ function App() {
       <Routes>
         <Route
           path="/"
+          element={<Finish setIsMusicAllowed={setIsMusicAllowed} />}
+        />
+        {/* <Route
+          path="/home"
           element={<Home setIsMusicAllowed={setIsMusicAllowed} />}
+        /> */}
+
+        <Route path="/demo-admin/select-language" element={<Language />} />
+
+        <Route
+          path="/demo-admin/terms-and-conditions"
+          element={<TermsAndConditions />}
         />
 
-        <Route path="/select-language" element={<Language />} />
-
-        <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-
-        <Route path="/login" element={<Login />} />
+        <Route path="/demo-admin/login" element={<Login />} />
 
         <Route path="/quiz/play" element={<ProtectedRoute />}>
           <Route
@@ -58,12 +66,15 @@ function App() {
           />
         </Route>
 
-        {/* <Route path="/login" element={<Login />} /> */}
-        <Route path="/login" element={<ProtectedRoute />}>
+        {/* <Route path="/demo-admin/login" element={<Login />} /> */}
+        <Route path="/demo-admin/login" element={<ProtectedRoute />}>
           <Route path="" element={<Login />} />
         </Route>
 
-        <Route path="/result/access-your-leader" element={<ProtectedRoute />}>
+        <Route
+          path="/demo-admin/result/access-your-leader"
+          element={<ProtectedRoute />}
+        >
           <Route path="" element={<LeaderBoard />} />
         </Route>
 
